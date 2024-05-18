@@ -380,12 +380,8 @@ end
 # This lane builds the app and uploads it to the Mac App Store, optionally
 # creating a GitHub release.
 # ---------------------------------------------------------------------------
-# Usage:
-# bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
-#
 # Example:
 # bundle exec fastlane build_and_upload_app_store
-# bundle exec fastlane build_and_upload_app_store create_github_release:true
 #############################################################################
 lane :build_and_upload_app_store do |options|
   configure_apply
@@ -412,19 +408,16 @@ lane :build_and_upload_app_store do |options|
     dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
   )
 
-  # Do not create the GitHub release unless explicitly requested
-  if options[:create_github_release]
-    archive_zip_path = "#{archive_path}.zip"
-    zip(path: archive_path, output_path: archive_zip_path)
+  archive_zip_path = "#{archive_path}.zip"
+  zip(path: archive_path, output_path: archive_zip_path)
 
-    create_release(
-      repository: GITHUB_REPO,
-      version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
-      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
-      release_assets: [archive_zip_path],
-      prerelease: options[:prerelease]
-    )
-  end
+  create_release(
+    repository: GITHUB_REPO,
+    version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
+    release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+    release_assets: [archive_zip_path],
+    prerelease: options[:prerelease]
+  )
 
   upload_to_testflight(api_key: app_store_connect_api_key)
 end
