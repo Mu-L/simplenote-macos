@@ -298,7 +298,7 @@ lane :build_and_upload_beta do
     owner_name: 'automattic',
     owner_type: 'organization',
     app_name: 'Simplenote-OSX',
-    ipa: './build/Simplenote.app',
+    ipa: File.join(PROJECT_FOLDER, 'build', 'Simplenote.app'),
     notify_testers: false
   )
 
