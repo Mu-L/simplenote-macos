@@ -304,7 +304,7 @@ lane :build_and_upload_beta do
 
   dsym_path = File.join(File.dirname(Dir.pwd), 'build', 'Simplenote.app.dSYM.zip')
 
-  sentry_upload_dsym(
+  sentry_debug_files_upload(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenote-macos',
@@ -398,7 +398,7 @@ lane :build_and_upload_app_store do |options|
     archive_path: archive_path
   )
 
-  sentry_upload_dsym(
+  sentry_debug_files_upload(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenotemacos',
