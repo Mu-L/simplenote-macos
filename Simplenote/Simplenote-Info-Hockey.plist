@@ -37,6 +37,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$BUILD_NUMBER</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
@@ -52,11 +54,13 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>SPApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>OpenNewNoteIntent</string>
+	</array>
 	<key>SUFeedURL</key>
 	<string>https://api.appcenter.ms/v0.1/public/sparkle/apps/ede9c493-4694-6c51-a1db-1db167b49892</string>
 	<key>SUScheduledCheckInterval</key>
 	<string>3600</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 </dict>
 </plist>

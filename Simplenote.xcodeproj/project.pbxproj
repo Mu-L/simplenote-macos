@@ -474,6 +474,10 @@
 		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
 		BA8CF21C2BFD20770087F33D /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8CF21B2BFD20770087F33D /* Intents.framework */; };
 		BA8CF21F2BFD20780087F33D /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF21E2BFD20780087F33D /* IntentHandler.swift */; };
+		BA8CF2292BFD24030087F33D /* ShortcutIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */; };
+		BA8CF22A2BFD24030087F33D /* ShortcutIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */; };
+		BA8CF22D2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF22C2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift */; };
+		BA8CF22F2BFD26800087F33D /* ShortcutsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
@@ -893,6 +897,9 @@
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA8CF21E2BFD20780087F33D /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		BA8CF2202BFD20780087F33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ShortcutIntents.intentdefinition; sourceTree = "<group>"; };
+		BA8CF22C2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNewNoteIntentHandler.swift; sourceTree = "<group>"; };
+		BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsHandler.swift; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
 		BAA0A87926B9F0B50006260E /* RemoteError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
@@ -1070,6 +1077,7 @@
 				26F72A9814032D2A00A7935E /* main.m */,
 				26F72A9A14032D2A00A7935E /* Simplenote-Prefix.pch */,
 				26F72A9B14032D2A00A7935E /* Credits.rtf */,
+				BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1452,6 +1460,7 @@
 			isa = PBXGroup;
 			children = (
 				B574CA72242D552100F8D02F /* TextViewInputHandler.swift */,
+				BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1730,10 +1739,19 @@
 		BA8CF21D2BFD20770087F33D /* SimplenoteIntents */ = {
 			isa = PBXGroup;
 			children = (
+				BA8CF22B2BFD24570087F33D /* IntentHandlers */,
 				BA8CF21E2BFD20780087F33D /* IntentHandler.swift */,
 				BA8CF2202BFD20780087F33D /* Info.plist */,
 			);
 			path = SimplenoteIntents;
+			sourceTree = "<group>";
+		};
+		BA8CF22B2BFD24570087F33D /* IntentHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				BA8CF22C2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift */,
+			);
+			path = IntentHandlers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2208,6 +2226,7 @@
 				B58BBD3D2523FF160025135F /* PopoverWindow.swift in Sources */,
 				B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
+				BA8CF2292BFD24030087F33D /* ShortcutIntents.intentdefinition in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				BAF1B0C82BCDDA9600B55F73 /* NoteWindowControllersManager.swift in Sources */,
@@ -2346,6 +2365,7 @@
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
+				BA8CF22F2BFD26800087F33D /* ShortcutsHandler.swift in Sources */,
 				B5A0AB6526822E340030E285 /* BreadcrumbsViewController.swift in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				A6084B2C25D1B77000DDFAB2 /* Storage.m in Sources */,
@@ -2595,6 +2615,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8CF22A2BFD24030087F33D /* ShortcutIntents.intentdefinition in Sources */,
+				BA8CF22D2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift in Sources */,
 				BA8CF21F2BFD20780087F33D /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
