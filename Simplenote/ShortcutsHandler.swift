@@ -8,10 +8,6 @@
 
 import Foundation
 
-enum ActivityType: String {
-    case newNoteShortcut = "OpenNewNoteIntent"
-}
-
 class ShortcutsHandler: NSObject {
     @objc
     static var shared = ShortcutsHandler()

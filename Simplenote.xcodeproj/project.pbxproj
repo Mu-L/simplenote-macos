@@ -478,6 +478,7 @@
 		BA8CF22A2BFD24030087F33D /* ShortcutIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */; };
 		BA8CF22D2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF22C2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift */; };
 		BA8CF22F2BFD26800087F33D /* ShortcutsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */; };
+		BA8CF2312BFD2CA90087F33D /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CF2302BFD2CA90087F33D /* ActivityType.swift */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
@@ -900,6 +901,7 @@
 		BA8CF2282BFD24030087F33D /* ShortcutIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ShortcutIntents.intentdefinition; sourceTree = "<group>"; };
 		BA8CF22C2BFD246A0087F33D /* OpenNewNoteIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNewNoteIntentHandler.swift; sourceTree = "<group>"; };
 		BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsHandler.swift; sourceTree = "<group>"; };
+		BA8CF2302BFD2CA90087F33D /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
 		BAA0A87926B9F0B50006260E /* RemoteError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
@@ -1461,6 +1463,7 @@
 			children = (
 				B574CA72242D552100F8D02F /* TextViewInputHandler.swift */,
 				BA8CF22E2BFD26800087F33D /* ShortcutsHandler.swift */,
+				BA8CF2302BFD2CA90087F33D /* ActivityType.swift */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -2216,6 +2219,7 @@
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
+				BA8CF2312BFD2CA90087F33D /* ActivityType.swift in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
 				BA2C65CB26FE996100FA84E1 /* NSButton+Extensions.swift in Sources */,
 				B58117E225B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
