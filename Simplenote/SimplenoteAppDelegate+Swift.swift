@@ -252,7 +252,7 @@ extension SimplenoteAppDelegate {
             return true
         }
 
-        return false
+        return ShortcutsHandler.shared.handleUserActivity(userActivity)
     }
 }
 

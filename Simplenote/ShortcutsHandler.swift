@@ -7,3 +7,35 @@
 //
 
 import Foundation
+
+enum ActivityType: String {
+    case newNoteShortcut = "OpenNewNoteIntent"
+}
+
+class ShortcutsHandler: NSObject {
+    @objc
+    static var shared = ShortcutsHandler()
+
+    /// Is User authenticated?
+    ///
+    private var isAuthenticated: Bool {
+        return SimplenoteAppDelegate.shared().simperium.user?.authenticated() == true
+    }
+
+    /// Handles a UserActivity instance. Returns true on success.
+    ///
+    @objc
+    func handleUserActivity(_ userActivity: NSUserActivity) -> Bool {
+        guard let type = ActivityType(rawValue: userActivity.activityType),
+              isAuthenticated else {
+            return false
+        }
+
+        switch type {
+        case .newNoteShortcut:
+            SimplenoteAppDelegate.shared().noteEditorViewController.createNote(from: nil)
+        }
+
+        return true
+    }
+}
