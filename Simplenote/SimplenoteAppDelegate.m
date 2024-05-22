@@ -485,13 +485,6 @@
     return _coreDataManager;
 }
 
-- (NSURL *)applicationFilesDirectory
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *libraryURL = [[fileManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
-    return [libraryURL URLByAppendingPathComponent:@"Simplenote"];
-}
-
 - (NSManagedObjectModel *)managedObjectModel
 {
     return self.coreDataManager.managedObjectModel;
