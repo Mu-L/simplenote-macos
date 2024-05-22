@@ -9,6 +9,11 @@
 import Foundation
 import CoreData
 
+enum CoreDataUsageType {
+    case standard
+    case intents
+}
+
 enum CoreDataManagerError: Error {
     case couldNotBuildModel
     case noApplicationFilesDirectoryURL
@@ -32,7 +37,7 @@ class CoreDataManager: NSObject {
     private(set) var managedObjectContext: NSManagedObjectContext
     private(set) var persistentStoreCoordinator: NSPersistentStoreCoordinator
 
-    init(storageSettings: StorageSettings = StorageSettings()) throws {
+    init(storageSettings: StorageSettings = StorageSettings(), usage: CoreDataUsageType = .standard) throws {
         guard let modelURL = storageSettings.modelURL,
               let mom = NSManagedObjectModel(contentsOf: modelURL) else {
             throw CoreDataManagerError.couldNotBuildModel
@@ -44,6 +49,9 @@ class CoreDataManager: NSObject {
         self.managedObjectModel = mom
         self.managedObjectContext = context
         self.persistentStoreCoordinator = psc
+        super.init()
+
+        setupCoreDataStackIfNeeded(usageType: usage)
     }
 
     static private func preparePSC(with storageSettings: StorageSettings, model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
@@ -82,6 +90,12 @@ class CoreDataManager: NSObject {
             try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
         } else {
             throw error
+        }
+    }
+
+    private func setupCoreDataStackIfNeeded(usageType: CoreDataUsageType) {
+        if usageType != .standard {
+            managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         }
     }
 }
