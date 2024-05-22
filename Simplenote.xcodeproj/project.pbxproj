@@ -469,6 +469,7 @@
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA654FE02BFE5C15002E8D88 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA654FDF2BFE5C15002E8D88 /* CoreDataManager.swift */; };
+		BA654FE22BFE5CA0002E8D88 /* StorageSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA654FE12BFE5CA0002E8D88 /* StorageSettings.swift */; };
 		BA71EC242BC88FD000F42CB1 /* CSSearchable+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005A2BC878F1003F1B75 /* CSSearchable+Helpers.swift */; };
 		BA71EC252BC88FFC00F42CB1 /* NSManagedObjectContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005C2BC88397003F1B75 /* NSManagedObjectContext+Simplenote.swift */; };
 		BA78AF6F2B5B2BBA00DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF6E2B5B2BBA00DCF896 /* AutomatticTracks */; };
@@ -896,6 +897,7 @@
 		BA553F0727065E20007737E9 /* FontSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettings.swift; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
 		BA654FDF2BFE5C15002E8D88 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		BA654FE12BFE5CA0002E8D88 /* StorageSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSettings.swift; sourceTree = "<group>"; };
 		BA8CF21A2BFD20770087F33D /* SimplenoteIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplenoteIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA8CF21E2BFD20780087F33D /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -1156,6 +1158,7 @@
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
 				BA654FDF2BFE5C15002E8D88 /* CoreDataManager.swift */,
+				BA654FE12BFE5CA0002E8D88 /* StorageSettings.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -2270,6 +2273,7 @@
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5177CD025EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
+				BA654FE22BFE5CA0002E8D88 /* StorageSettings.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B555CE3625ED81F200610BC6 /* AuthWindowController.swift in Sources */,
 				B5F5414E25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */,
