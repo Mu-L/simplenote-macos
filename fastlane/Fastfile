@@ -267,52 +267,6 @@ lane :finalize_release do |options|
   trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
 end
 
-#####################################################################################
-# build_and_upload_beta
-# -----------------------------------------------------------------------------------
-# This lane builds the app and upload it for beta testing
-# -----------------------------------------------------------------------------------
-# Usage:
-# bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
-#
-# Example:
-# bundle exec fastlane build_and_upload_beta
-# bundle exec fastlane build_and_upload_beta skip_confirm:true
-#####################################################################################
-desc 'Builds and updates for beta distribution'
-lane :build_and_upload_beta do
-  ensure_git_status_clean
-
-  configure_apply
-  sh('rake dependencies:pod:clean')
-  cocoapods
-
-  build_app(
-    workspace: WORKSPACE,
-    scheme: INTERNAL_SCHEME,
-    clean: true,
-    output_directory: BUILD_FOLDER
-  )
-
-  appcenter_upload(
-    api_token: get_required_env('APPCENTER_API_TOKEN'),
-    owner_name: 'automattic',
-    owner_type: 'organization',
-    app_name: 'Simplenote-OSX',
-    ipa: './build/Simplenote.app',
-    notify_testers: false
-  )
-
-  dsym_path = File.join(File.dirname(Dir.pwd), 'build', 'Simplenote.app.dSYM.zip')
-
-  sentry_upload_dsym(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: 'a8c',
-    project_slug: 'simplenote-macos',
-    dsym_path: dsym_path
-  )
-end
-
 # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
 #
 # @option [Boolean] with_screenshots (default: false) If true, will also upload the latest screenshot files to ASC
@@ -338,41 +292,6 @@ lane :update_metadata_on_app_store_connect do |options|
     precheck_include_in_app_purchases: false,
     api_key: app_store_connect_api_key
   )
-end
-
-# Temporary lane to automate the process of uploading the .app manually
-# exported after archiving the Simplenote scheme from Xcode.
-#
-# The process is not automated via the build_and_upload_beta lane due to
-# issues with Sparkle and code signing.
-lane :upload_app_to_appcenter do |options|
-  app_path = options[:app_path]
-  UI.user_error! "Missing .app path option.\nUsage:\n\tfastlane upload_app_to_appcenter app_path:path/to/.app" if app_path.nil?
-
-  app_path = File.expand_path(app_path)
-  UI.user_error! "Could not find .app at #{app_path}" unless File.exist?(app_path)
-
-  Tempfile.create do |t|
-    release_notes_path = File.path(t)
-    system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
-
-    appcenter_upload(
-      api_token: get_required_env('APPCENTER_API_TOKEN'),
-      owner_name: 'automattic',
-      owner_type: 'organization',
-      app_name: 'Simplenote-OSX',
-      ipa: app_path,
-      release_notes: File.read(release_notes_path),
-      notify_testers: false
-    )
-  end
-
-  # Rather than taking another manual step and finding the path to the
-  # archive, let's just bank on the fact that one wouldn't do many archives
-  # of the app on a given day and upload all of the archives done today.
-  Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
-    system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
-  end
 end
 
 #############################################################################
