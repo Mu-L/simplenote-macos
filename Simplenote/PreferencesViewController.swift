@@ -188,6 +188,10 @@ class PreferencesViewController: NSViewController {
 
     // MARK: Account Settings
 
+    @IBAction func addPasskeyWasPressed(_ sender: Any) {
+        
+    }
+
     @IBAction private func logOutWasPressed(_ sender: Any) {
         let appDelegate = SimplenoteAppDelegate.shared()
 
