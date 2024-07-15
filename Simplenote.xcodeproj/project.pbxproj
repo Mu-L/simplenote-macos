@@ -283,6 +283,10 @@
 		BA5A65972C091D0600F605A6 /* CoreDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A65962C091D0600F605A6 /* CoreDataValidator.swift */; };
 		BA5A65992C091E6000F605A6 /* MockStorageValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A65982C091E6000F605A6 /* MockStorageValidator.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
+		BA6689612C45C507009D4E84 /* PasskeyRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66895F2C45C4B4009D4E84 /* PasskeyRemote.swift */; };
+		BA6689642C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */; };
+		BA6689662C45C54B009D4E84 /* PasskeyRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */; };
+		BA6689682C45C59E009D4E84 /* PasskeyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689672C45C59E009D4E84 /* PasskeyError.swift */; };
 		BA71EC242BC88FD000F42CB1 /* CSSearchable+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005A2BC878F1003F1B75 /* CSSearchable+Helpers.swift */; };
 		BA71EC252BC88FFC00F42CB1 /* NSManagedObjectContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005C2BC88397003F1B75 /* NSManagedObjectContext+Simplenote.swift */; };
 		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
@@ -769,6 +773,10 @@
 		BA5A65962C091D0600F605A6 /* CoreDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataValidator.swift; sourceTree = "<group>"; };
 		BA5A65982C091E6000F605A6 /* MockStorageValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageValidator.swift; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
+		BA66895F2C45C4B4009D4E84 /* PasskeyRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PasskeyRemote.swift; path = SimplenoteTests/PasskeyRemote.swift; sourceTree = SOURCE_ROOT; };
+		BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrationChallenge.swift; sourceTree = "<group>"; };
+		BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrationResponse.swift; sourceTree = "<group>"; };
+		BA6689672C45C59E009D4E84 /* PasskeyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyError.swift; sourceTree = "<group>"; };
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -1168,6 +1176,7 @@
 				B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */,
 				B502C1DC25BA2EB700145D6C /* AccountRemote.swift */,
 				B587D7DD2C21FDDF006645CF /* LoginRemote.swift */,
+				BA66895F2C45C4B4009D4E84 /* PasskeyRemote.swift */,
 				B5F5414725EFFC2200CAF52C /* SignupRemote.swift */,
 				BA938CEB26ACFF4A00BE5A1D /* Remote.swift */,
 				BAA0A87926B9F0B50006260E /* RemoteError.swift */,
@@ -1394,6 +1403,7 @@
 		B587D7E82C221503006645CF /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				BA6689622C45C51C009D4E84 /* Passkeys */,
 				B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */,
 				B587D7E92C221575006645CF /* SimperiumAuthenticatorProtocol.swift */,
 				B587D7ED2C2217B1006645CF /* LoginRemoteProtocol.swift */,
@@ -1675,6 +1685,16 @@
 				BA5A658E2C090FEC00F605A6 /* FileManagerProtocol.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		BA6689622C45C51C009D4E84 /* Passkeys */ = {
+			isa = PBXGroup;
+			children = (
+				BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */,
+				BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */,
+				BA6689672C45C59E009D4E84 /* PasskeyError.swift */,
+			);
+			name = Passkeys;
 			sourceTree = "<group>";
 		};
 		BAAA71D32C07A0F000244C01 /* Models */ = {
@@ -2143,6 +2163,7 @@
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				A6C1E21525E010140076ADF7 /* SPApplication.swift in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
+				BA6689662C45C54B009D4E84 /* PasskeyRegistrationResponse.swift in Sources */,
 				BA71EC252BC88FFC00F42CB1 /* NSManagedObjectContext+Simplenote.swift in Sources */,
 				BAB261752BFFD319009A98D7 /* OpenNewNoteIntentHandler.swift in Sources */,
 				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
@@ -2177,6 +2198,7 @@
 				B55C312D24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B56FA7932437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
+				BA6689612C45C507009D4E84 /* PasskeyRemote.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
 				BAFB545126CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */,
 				B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */,
@@ -2198,6 +2220,7 @@
 				B54F9A6824D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
+				BA6689642C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift in Sources */,
 				B5BB8CD524DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				BA553F0927065E20007737E9 /* FontSettings.swift in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
@@ -2219,6 +2242,7 @@
 				B58117E325B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
 				B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */,
 				B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */,
+				BA6689682C45C59E009D4E84 /* PasskeyError.swift in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7992437C79D002CB9FF /* SPUserInterface.swift in Sources */,

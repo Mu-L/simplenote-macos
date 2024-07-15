@@ -98,6 +98,14 @@ extension String {
 
         return try? JSONSerialization.jsonObject(with: data)
     }
+
+    func toBase64url() -> String {
+        let base64url = self
+            .replacingOccurrences(of: "+", with: "-")
+            .replacingOccurrences(of: "/", with: "_")
+            .replacingOccurrences(of: "=", with: "")
+        return base64url
+    }
 }
 
 // MARK: - Searching for the first / last characters
