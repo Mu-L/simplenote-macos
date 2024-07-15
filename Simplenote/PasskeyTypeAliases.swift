@@ -1,0 +1,4 @@
+import AuthenticationServices
+
+typealias PresentationContext = ASAuthorizationControllerPresentationContextProviding
+typealias PublicKeyCredentialRegistration = ASAuthorizationPlatformPublicKeyCredentialRegistration

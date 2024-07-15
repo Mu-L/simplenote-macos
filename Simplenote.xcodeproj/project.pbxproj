@@ -287,6 +287,8 @@
 		BA6689642C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */; };
 		BA6689662C45C54B009D4E84 /* PasskeyRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */; };
 		BA6689682C45C59E009D4E84 /* PasskeyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689672C45C59E009D4E84 /* PasskeyError.swift */; };
+		BA66896A2C45C60E009D4E84 /* PasskeyRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6689692C45C60E009D4E84 /* PasskeyRegistrator.swift */; };
+		BA66896C2C45C64C009D4E84 /* PasskeyTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */; };
 		BA71EC242BC88FD000F42CB1 /* CSSearchable+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005A2BC878F1003F1B75 /* CSSearchable+Helpers.swift */; };
 		BA71EC252BC88FFC00F42CB1 /* NSManagedObjectContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005C2BC88397003F1B75 /* NSManagedObjectContext+Simplenote.swift */; };
 		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
@@ -777,6 +779,8 @@
 		BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrationChallenge.swift; sourceTree = "<group>"; };
 		BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrationResponse.swift; sourceTree = "<group>"; };
 		BA6689672C45C59E009D4E84 /* PasskeyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyError.swift; sourceTree = "<group>"; };
+		BA6689692C45C60E009D4E84 /* PasskeyRegistrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrator.swift; sourceTree = "<group>"; };
+		BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyTypeAliases.swift; sourceTree = "<group>"; };
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -1690,9 +1694,11 @@
 		BA6689622C45C51C009D4E84 /* Passkeys */ = {
 			isa = PBXGroup;
 			children = (
+				BA6689692C45C60E009D4E84 /* PasskeyRegistrator.swift */,
 				BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */,
 				BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */,
 				BA6689672C45C59E009D4E84 /* PasskeyError.swift */,
+				BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */,
 			);
 			name = Passkeys;
 			sourceTree = "<group>";
@@ -2276,8 +2282,10 @@
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */,
+				BA66896A2C45C60E009D4E84 /* PasskeyRegistrator.swift in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
+				BA66896C2C45C64C009D4E84 /* PasskeyTypeAliases.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				B587D7DE2C21FDDF006645CF /* LoginRemote.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
