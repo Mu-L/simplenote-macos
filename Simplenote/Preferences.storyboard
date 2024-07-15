@@ -88,10 +88,10 @@
                                                 <buttonCell key="cell" type="push" title="Add Passkey Sign in" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="naG-xr-o4o">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
-                                                    <connections>
-                                                        <action selector="addPasskeyWasPressed:" target="ReV-pG-fyt" id="hCX-tN-f8q"/>
-                                                    </connections>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="passkeyRegistrationTapped:" target="ReV-pG-fyt" id="PIW-D1-m6F"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

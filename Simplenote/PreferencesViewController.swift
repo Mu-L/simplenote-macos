@@ -1,4 +1,5 @@
 import Cocoa
+import AuthenticationServices
 import CoreSpotlight
 
 class PreferencesViewController: NSViewController {
@@ -222,6 +223,10 @@ class PreferencesViewController: NSViewController {
 
     }
 
+    @IBAction func passkeyRegistrationTapped(_ sender: Any) {
+        presentPasskeyRegistrationAlert()
+    }
+
     @IBAction private func deleteAccountWasPressed(_ sender: Any) {
         guard let user = simperium.user,
         let window = view.window else {
@@ -324,6 +329,59 @@ class PreferencesViewController: NSViewController {
     }
 }
 
+// MARK: - Passkeys
+//
+extension PreferencesViewController {
+    private func presentPasskeyRegistrationAlert() {
+        let alert = NSAlert(messageText: PasskeyAuthentication.alertTitle, informativeText: PasskeyAuthentication.message)
+        let passwordField = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+        alert.accessoryView = passwordField
+        alert.addButton(withTitle: PasskeyAuthentication.submit)
+        alert.addButton(withTitle: PasskeyAuthentication.cancel)
+
+        let modalResult = alert.runModal()
+
+        if modalResult == .alertFirstButtonReturn {
+            guard let email = simperium.user?.email else {
+                presentPasskeyRegistrationAlert(succeeded: false)
+                return
+            }
+
+            Task { @MainActor in
+                await attemptPasskeyRegistration(for: email, password: passwordField.stringValue)
+            }
+        }
+    }
+
+    private func attemptPasskeyRegistration(for email: String, password: String) async {
+        do {
+            let registrator = PasskeyRegistrator()
+            try await registrator.attemptPasskeyRegistration(for: email, password: password, presentationContext: self)
+            presentPasskeyRegistrationAlert(succeeded: true)
+        } catch {
+            NSLog("[PasskeyRegistration] Could not register passkey: %@", error.localizedDescription)
+            presentPasskeyRegistrationAlert(succeeded: false)
+        }
+    }
+
+    private func presentPasskeyRegistrationAlert(succeeded: Bool) {
+        DispatchQueue.main.async {
+            let title = succeeded ? PasskeyAuthentication.successTitle : PasskeyAuthentication.failureTitle
+            let message = succeeded ? PasskeyAuthentication.successMessage : PasskeyAuthentication.failureMessage
+            let alert = NSAlert(messageText: title, informativeText: message)
+            alert.addButton(withTitle: PasskeyAuthentication.okay)
+            alert.runModal()
+        }
+    }
+}
+
+extension PreferencesViewController: ASAuthorizationControllerPresentationContextProviding {
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        view.window!
+    }
+
+}
+
 private struct Strings {
     static let account = NSLocalizedString("Account:", comment: "Account label")
     static let noteSortOrder = NSLocalizedString("Note sort order:", comment: "Note Sort Order label")
@@ -355,6 +413,18 @@ private struct Strings {
 
         return link
     }
+}
+
+private struct PasskeyAuthentication {
+    static let alertTitle = NSLocalizedString("Passkey Setup", comment: "Alert title for setting up passkeys")
+    static let message = NSLocalizedString("To add passkeys you must enter your password", comment: "Message prompting user for password to create passkey")
+    static let submit = NSLocalizedString("Submit", comment: "Submit button title")
+    static let cancel = NSLocalizedString("Cancel", comment: "Cancel button title")
+    static let failureTitle = NSLocalizedString("Passkey Registration Failed", comment: "Title for alert when passkey registration fails")
+    static let failureMessage = NSLocalizedString("Could not register passkey.  Please try again later", comment: "Message for when passkey registration fails")
+    static let okay = NSLocalizedString("Okay", comment: "confirm button title")
+    static let successTitle = NSLocalizedString("Success!!", comment: "Title for alert when passkey registration succeeds")
+    static let successMessage = NSLocalizedString("Passkey Registration Succeeded", comment: "message for alert when passkey registration succeeds")
 }
 
 // MARK: - Notifications
