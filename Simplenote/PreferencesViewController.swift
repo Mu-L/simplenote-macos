@@ -348,7 +348,11 @@ extension PreferencesViewController {
             }
 
             Task { @MainActor in
+                let activityIndicator = BlockingActivityIndicator.showIndicator(in: view)
+
                 await attemptPasskeyRegistration(for: email, password: passwordField.stringValue)
+
+                activityIndicator.stopAnimation()
             }
         }
     }

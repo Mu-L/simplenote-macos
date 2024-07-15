@@ -291,6 +291,7 @@
 		BA66896C2C45C64C009D4E84 /* PasskeyTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */; };
 		BA71EC242BC88FD000F42CB1 /* CSSearchable+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005A2BC878F1003F1B75 /* CSSearchable+Helpers.swift */; };
 		BA71EC252BC88FFC00F42CB1 /* NSManagedObjectContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52005C2BC88397003F1B75 /* NSManagedObjectContext+Simplenote.swift */; };
+		BA7575E62C45E269009C08FC /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575E52C45E269009C08FC /* BlockingActivityIndicator.swift */; };
 		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BA94CB652C0E46CC00B34EA7 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA94CB642C0E46CC00B34EA7 /* Uploader.swift */; };
@@ -781,6 +782,7 @@
 		BA6689672C45C59E009D4E84 /* PasskeyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyError.swift; sourceTree = "<group>"; };
 		BA6689692C45C60E009D4E84 /* PasskeyRegistrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrator.swift; sourceTree = "<group>"; };
 		BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyTypeAliases.swift; sourceTree = "<group>"; };
+		BA7575E52C45E269009C08FC /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -1133,6 +1135,7 @@
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
 				A667305325C9751B00090DE3 /* SearchMapView.swift */,
+				BA7575E52C45E269009C08FC /* BlockingActivityIndicator.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2164,6 +2167,7 @@
 				BACA687B2C0A7634005409C1 /* KeychainPasswordItem.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				B51AFE7725D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
+				BA7575E62C45E269009C08FC /* BlockingActivityIndicator.swift in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
