@@ -295,6 +295,8 @@
 		BA7575E82C46FAF9009C08FC /* PasskeyAuthChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575E72C46FAF9009C08FC /* PasskeyAuthChallenge.swift */; };
 		BA7575EA2C46FB07009C08FC /* PasskeyAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575E92C46FB07009C08FC /* PasskeyAuthResponse.swift */; };
 		BA7575EC2C46FB0B009C08FC /* PasskeyVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575EB2C46FB0B009C08FC /* PasskeyVerifyResponse.swift */; };
+		BA7575EE2C46FB30009C08FC /* PasskeyAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575ED2C46FB30009C08FC /* PasskeyAuthenticator.swift */; };
+		BA7575F02C46FB80009C08FC /* Data+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7575EF2C46FB80009C08FC /* Data+Simplenote.swift */; };
 		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BA94CB652C0E46CC00B34EA7 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA94CB642C0E46CC00B34EA7 /* Uploader.swift */; };
@@ -789,6 +791,8 @@
 		BA7575E72C46FAF9009C08FC /* PasskeyAuthChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyAuthChallenge.swift; sourceTree = "<group>"; };
 		BA7575E92C46FB07009C08FC /* PasskeyAuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyAuthResponse.swift; sourceTree = "<group>"; };
 		BA7575EB2C46FB0B009C08FC /* PasskeyVerifyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyVerifyResponse.swift; sourceTree = "<group>"; };
+		BA7575ED2C46FB30009C08FC /* PasskeyAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasskeyAuthenticator.swift; sourceTree = "<group>"; };
+		BA7575EF2C46FB80009C08FC /* Data+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Simplenote.swift"; sourceTree = "<group>"; };
 		BA8CF21B2BFD20770087F33D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -1261,6 +1265,7 @@
 				BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */,
 				BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */,
 				BA52005C2BC88397003F1B75 /* NSManagedObjectContext+Simplenote.swift */,
+				BA7575EF2C46FB80009C08FC /* Data+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1703,6 +1708,7 @@
 		BA6689622C45C51C009D4E84 /* Passkeys */ = {
 			isa = PBXGroup;
 			children = (
+				BA7575ED2C46FB30009C08FC /* PasskeyAuthenticator.swift */,
 				BA6689692C45C60E009D4E84 /* PasskeyRegistrator.swift */,
 				BA6689632C45C52B009D4E84 /* PasskeyRegistrationChallenge.swift */,
 				BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */,
@@ -2179,6 +2185,8 @@
 				B51AFE7725D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
 				BA7575E62C45E269009C08FC /* BlockingActivityIndicator.swift in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
+				BA7575F02C46FB80009C08FC /* Data+Simplenote.swift in Sources */,
+				BA7575EE2C46FB30009C08FC /* PasskeyAuthenticator.swift in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				A6C1E21525E010140076ADF7 /* SPApplication.swift in Sources */,
