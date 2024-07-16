@@ -1,4 +1,4 @@
-import Appkit
+import AppKit
 
 class BlockingActivityIndicator: NSView {
     let activityIndicator: NSProgressIndicator
