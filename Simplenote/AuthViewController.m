@@ -159,8 +159,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
         return;
     }
 
-    //TODO: Login with passkey
-    NSLog(@"# Logging in with passkeys!!");
+    [self performPasskeyAuthentication];
 }
 
 - (void)pressedSignUp {

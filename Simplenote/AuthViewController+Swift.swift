@@ -198,7 +198,13 @@ extension AuthViewController {
             self.setInterfaceEnabled(true)
         }
     }
-    
+
+    @objc
+    func performPasskeyAuthentication() {
+        //TODO: Login with Passkeys
+        print("# Logging in with passkeys!!!!")
+    }
+
     @objc
     func performLoginWithEmailRequest() {
         Task {
