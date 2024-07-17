@@ -151,6 +151,17 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self performLoginWithEmailRequest];
 }
 
+- (void)pressedLoginWithPasskey {
+
+    [self clearAuthenticationError];
+
+    if (![self validateSignInWithPasskey]) {
+        return;
+    }
+
+    [self performPasskeyAuthentication];
+}
+
 - (void)pressedSignUp {
     [SPTracker trackUserSignedUp];
     [self clearAuthenticationError];
@@ -290,6 +301,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (BOOL)validateSignInWithMagicLink {
+    return [self validateConnection] &&
+           [self validateUsername];
+}
+
+- (BOOL)validateSignInWithPasskey {
     return [self validateConnection] &&
            [self validateUsername];
 }

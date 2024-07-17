@@ -31,6 +31,7 @@
 
 - (void)pressedLogInWithPassword;
 - (void)pressedLoginWithMagicLink;
+- (void)pressedLoginWithPasskey;
 - (void)pressedSignUp;
 - (void)openForgotPasswordURL;
 

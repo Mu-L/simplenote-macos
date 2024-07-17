@@ -107,6 +107,23 @@ extension AuthenticationMode {
                            isWordPressVisible: true)
     }
 
+    /// Auth Mode: Login is handled via Passkeys!
+    ///
+    @objc
+    static var loginWithPasskeys: AuthenticationMode {
+        AuthenticationMode(primaryActionText: PasskeyStrings.primaryAction,
+                           primaryActionAnimationText: PasskeyStrings.primaryAnimationText,
+                           primaryActionSelector: #selector(AuthViewController.pressedLoginWithPasskey),
+                           secondaryActionText: PasskeyStrings.secondaryAction,
+                           secondaryActionSelector: #selector(AuthViewController.switchToPasswordAuth),
+                           switchActionText: PasskeyStrings.switchAction,
+                           switchActionTip: PasskeyStrings.switchTip,
+                           switchTargetMode: { .signup },
+                           isPasswordVisible: false,
+                           isSecondaryActionVisible: true,
+                           isWordPressVisible: true)
+    }
+
     /// Auth Mode: SignUp
     ///
     @objc
@@ -118,7 +135,7 @@ extension AuthenticationMode {
                            secondaryActionSelector: nil,
                            switchActionText: SignupStrings.switchAction,
                            switchActionTip: SignupStrings.switchTip,
-                           switchTargetMode: { .loginWithMagicLink },
+                           switchTargetMode: { .loginWithPasskeys },
                            isPasswordVisible: false,
                            isSecondaryActionVisible: false,
                            isWordPressVisible: false)
@@ -149,4 +166,12 @@ private enum SignupStrings {
     static let primaryAnimationText = NSLocalizedString("Signing Up...", comment: "Title of button for logging in")
     static let switchAction         = NSLocalizedString("Log In", comment: "Title of button for logging in up")
     static let switchTip            = NSLocalizedString("Already have an account?", comment: "Link to sign in to an account")
+}
+
+private enum PasskeyStrings {
+    static let primaryAction        = NSLocalizedString("Log In With Passkeys", comment: "Login with Passkey action")
+    static let primaryAnimationText = NSLocalizedString("Requesting Passkey...", comment: "Title of button for logging in")
+    static let secondaryAction      = NSLocalizedString("Continue with Password", comment: "Continue with Password Action")
+    static let switchAction         = NSLocalizedString("Sign Up", comment: "Title of button for signing up")
+    static let switchTip            = NSLocalizedString("Need an account?", comment: "Link to create an account")
 }
