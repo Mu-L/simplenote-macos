@@ -16,7 +16,6 @@ class BlockingActivityIndicator: NSView {
     private func setupView() {
         wantsLayer = true
         layer?.backgroundColor = NSColor.black.withAlphaComponent(0.3).cgColor
-        translatesAutoresizingMaskIntoConstraints = false
 
         activityIndicator.style = .spinning
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +44,8 @@ class BlockingActivityIndicator: NSView {
 
     static func showIndicator(in view: NSView, spinnerRect: NSRect = NSRect(x: 0, y: 0, width: 50, height: 50)) -> BlockingActivityIndicator {
         let indicator = BlockingActivityIndicator(indicatorFrame: spinnerRect)
-
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(indicator)
         NSLayoutConstraint.activate([
             indicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
