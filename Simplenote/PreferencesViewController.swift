@@ -1,4 +1,5 @@
 import Cocoa
+import AuthenticationServices
 import CoreSpotlight
 
 class PreferencesViewController: NSViewController {
@@ -188,6 +189,10 @@ class PreferencesViewController: NSViewController {
 
     // MARK: Account Settings
 
+    @IBAction func addPasskeyWasPressed(_ sender: Any) {
+        
+    }
+
     @IBAction private func logOutWasPressed(_ sender: Any) {
         let appDelegate = SimplenoteAppDelegate.shared()
 
@@ -216,6 +221,10 @@ class PreferencesViewController: NSViewController {
             self.view.window?.close()
         }
 
+    }
+
+    @IBAction func passkeyRegistrationTapped(_ sender: Any) {
+        presentPasskeyRegistrationAlert()
     }
 
     @IBAction private func deleteAccountWasPressed(_ sender: Any) {
@@ -318,6 +327,55 @@ class PreferencesViewController: NSViewController {
             CSSearchableIndex.default().deleteAllSearchableItems()
         }
     }
+}
+
+// MARK: - Passkeys
+//
+extension PreferencesViewController {
+    private func presentPasskeyRegistrationAlert() {
+        NSAlert.presentPasskeyRegistrationAlert { password in
+            self.lockViewAndAttemptRegistration(with: password)
+        }
+    }
+
+    private func lockViewAndAttemptRegistration(with password: String) {
+        guard let email = simperium.user?.email else {
+            presentPasskeyRegistrationAlert(succeeded: false)
+            return
+        }
+
+        Task { @MainActor in
+            let activityIndicator = BlockingActivityIndicator.showIndicator(in: view)
+
+            await attemptPasskeyRegistration(for: email, password: password)
+
+            activityIndicator.stopAnimation()
+        }
+    }
+
+    private func attemptPasskeyRegistration(for email: String, password: String) async {
+        do {
+            let registrator = PasskeyRegistrator()
+            try await registrator.attemptPasskeyRegistration(for: email, password: password, presentationContext: self)
+            presentPasskeyRegistrationAlert(succeeded: true)
+        } catch {
+            NSLog("[PasskeyRegistration] Could not register passkey: %@", error.localizedDescription)
+            presentPasskeyRegistrationAlert(succeeded: false)
+        }
+    }
+
+    private func presentPasskeyRegistrationAlert(succeeded: Bool) {
+        DispatchQueue.main.async {
+            NSAlert.presentPasskeyResolvedAlert(succeeded: succeeded)
+        }
+    }
+}
+
+extension PreferencesViewController: ASAuthorizationControllerPresentationContextProviding {
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        view.window!
+    }
+
 }
 
 private struct Strings {
