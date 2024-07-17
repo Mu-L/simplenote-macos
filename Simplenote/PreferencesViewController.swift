@@ -333,27 +333,23 @@ class PreferencesViewController: NSViewController {
 //
 extension PreferencesViewController {
     private func presentPasskeyRegistrationAlert() {
-        let alert = NSAlert(messageText: PasskeyAuthentication.alertTitle, informativeText: PasskeyAuthentication.message)
-        let passwordField = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        alert.accessoryView = passwordField
-        alert.addButton(withTitle: PasskeyAuthentication.submit)
-        alert.addButton(withTitle: PasskeyAuthentication.cancel)
+        NSAlert.presentPasskeyRegistrationAlert { password in
+            self.lockViewAndAttemptRegistration(with: password)
+        }
+    }
 
-        let modalResult = alert.runModal()
+    private func lockViewAndAttemptRegistration(with password: String) {
+        guard let email = simperium.user?.email else {
+            presentPasskeyRegistrationAlert(succeeded: false)
+            return
+        }
 
-        if modalResult == .alertFirstButtonReturn {
-            guard let email = simperium.user?.email else {
-                presentPasskeyRegistrationAlert(succeeded: false)
-                return
-            }
+        Task { @MainActor in
+            let activityIndicator = BlockingActivityIndicator.showIndicator(in: view)
 
-            Task { @MainActor in
-                let activityIndicator = BlockingActivityIndicator.showIndicator(in: view)
+            await attemptPasskeyRegistration(for: email, password: password)
 
-                await attemptPasskeyRegistration(for: email, password: passwordField.stringValue)
-
-                activityIndicator.stopAnimation()
-            }
+            activityIndicator.stopAnimation()
         }
     }
 
@@ -370,11 +366,7 @@ extension PreferencesViewController {
 
     private func presentPasskeyRegistrationAlert(succeeded: Bool) {
         DispatchQueue.main.async {
-            let title = succeeded ? PasskeyAuthentication.successTitle : PasskeyAuthentication.failureTitle
-            let message = succeeded ? PasskeyAuthentication.successMessage : PasskeyAuthentication.failureMessage
-            let alert = NSAlert(messageText: title, informativeText: message)
-            alert.addButton(withTitle: PasskeyAuthentication.okay)
-            alert.runModal()
+            NSAlert.presentPasskeyResolvedAlert(succeeded: succeeded)
         }
     }
 }
@@ -417,18 +409,6 @@ private struct Strings {
 
         return link
     }
-}
-
-private struct PasskeyAuthentication {
-    static let alertTitle = NSLocalizedString("Passkey Setup", comment: "Alert title for setting up passkeys")
-    static let message = NSLocalizedString("To add passkeys you must enter your password", comment: "Message prompting user for password to create passkey")
-    static let submit = NSLocalizedString("Submit", comment: "Submit button title")
-    static let cancel = NSLocalizedString("Cancel", comment: "Cancel button title")
-    static let failureTitle = NSLocalizedString("Passkey Registration Failed", comment: "Title for alert when passkey registration fails")
-    static let failureMessage = NSLocalizedString("Could not register passkey.  Please try again later", comment: "Message for when passkey registration fails")
-    static let okay = NSLocalizedString("Okay", comment: "confirm button title")
-    static let successTitle = NSLocalizedString("Success!!", comment: "Title for alert when passkey registration succeeds")
-    static let successMessage = NSLocalizedString("Passkey Registration Succeeded", comment: "message for alert when passkey registration succeeds")
 }
 
 // MARK: - Notifications

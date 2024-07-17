@@ -269,6 +269,7 @@
 		BA1B70122C1CD8D5008282D7 /* RecoveryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B70112C1CD8D5008282D7 /* RecoveryArchiver.swift */; };
 		BA2BF3402C07C75500A7C894 /* FindNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2BF33F2C07C75500A7C894 /* FindNoteIntentHandler.swift */; };
 		BA2C65CF26FE996A00FA84E1 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */; };
+		BA45AD522C483C81002E0D27 /* NSAlert+Passkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA45AD512C483C81002E0D27 /* NSAlert+Passkeys.swift */; };
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
 		BA4F223E2C1255A500144EDA /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
@@ -761,6 +762,7 @@
 		BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extensions.swift"; sourceTree = "<group>"; };
 		BA39C4542C0133F30004B2A9 /* SimplenoteDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplenoteDebug.entitlements; sourceTree = "<group>"; };
 		BA39C4552C0134180004B2A9 /* IntentsExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IntentsExtensionDebug.entitlements; sourceTree = "<group>"; };
+		BA45AD512C483C81002E0D27 /* NSAlert+Passkeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Passkeys.swift"; sourceTree = "<group>"; };
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
 		BA52005A2BC878F1003F1B75 /* CSSearchable+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CSSearchable+Helpers.swift"; sourceTree = "<group>"; };
@@ -1702,6 +1704,7 @@
 				BA6689652C45C54B009D4E84 /* PasskeyRegistrationResponse.swift */,
 				BA6689672C45C59E009D4E84 /* PasskeyError.swift */,
 				BA66896B2C45C64C009D4E84 /* PasskeyTypeAliases.swift */,
+				BA45AD512C483C81002E0D27 /* NSAlert+Passkeys.swift */,
 			);
 			name = Passkeys;
 			sourceTree = "<group>";
@@ -2106,6 +2109,7 @@
 				B518D37C2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */,
 				B58117E925B9EE7B00927E0C /* Button.swift in Sources */,
 				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
+				BA45AD522C483C81002E0D27 /* NSAlert+Passkeys.swift in Sources */,
 				375D294721E033D1007AB25A /* version.c in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
