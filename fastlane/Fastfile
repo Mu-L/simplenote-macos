@@ -503,7 +503,7 @@ end
 # Optionally, it can create any new necessary certificates or profiles.
 #
 # @option [Boolean] readonly (default: true) Whether to only fetch existing certificates and profiles, without generating new ones.
-lane :app_store_code_signing do |options|
+lane :app_store_code_signing do |readonly: true|
   # Fail early if secrets not available via `get_required_env`.
   # Otherwise, Fastlane will prompt to type them.
   access_key = get_required_env('MATCH_S3_ACCESS_KEY')
@@ -520,7 +520,7 @@ lane :app_store_code_signing do |options|
     platform: 'macos',
     # This Mac app also needs a Mac Installer Distribution certificate
     additional_cert_types: 'mac_installer_distribution',
-    readonly: options.fetch(:readonly, true),
+    readonly: readonly,
     app_identifier: [
       APP_STORE_BUNDLE_IDENTIFIER,
       APP_STORE_BUNDLE_IDENTIFIER_INTENTS
