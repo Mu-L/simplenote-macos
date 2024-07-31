@@ -84,7 +84,14 @@ def build_simplenote(codesign:, archive_path: nil)
     export_team_id: APPLE_TEAM_ID,
     xcargs: xcargs,
     export_options: {
-      method: 'app-store',
+      # Using 'app-store' (or 'app-store-connect' if/when https://github.com/fastlane/fastlane/pull/22163 lands)
+      # results `xcodebuild` failing to export the archive due to provisioning profile mismatches.
+      #
+      # Also worth asking: Do we need to export the archive (.app) when what needs to go to App Store Connect is the .pkg file which build_mac_app generates anyway?
+      #
+      # Note to self: 'package' will not work as method, xcodebuild will reject it.
+      # I was hoping it solved the issue of how to build the pkg...
+      method: 'mac-application',
       manageAppVersionAndBuildNumber: false
     }
   )
