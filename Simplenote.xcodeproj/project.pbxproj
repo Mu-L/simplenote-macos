@@ -47,7 +47,6 @@
 		37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C61FFEBB0B00FCB165 /* markdown-dark.css */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		3F07D7B225DD1CDD00D680D0 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
-		3F107B752C58BF44003F4755 /* SimplenoteEndpoints in Frameworks */ = {isa = PBXBuildFile; productRef = 3F107B742C58BF44003F4755 /* SimplenoteEndpoints */; };
 		3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -105,6 +104,7 @@
 		B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */; };
 		B51AFE6E25D30A1800A196DF /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE6C25D30A1800A196DF /* SearchField.swift */; };
 		B51AFE7725D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE7525D36CDD00A196DF /* NSFont+Simplenote.swift */; };
+		B51D44582C52AB2200F296A7 /* SimplenoteEndpoints in Frameworks */ = {isa = PBXBuildFile; productRef = B51D44572C52AB2200F296A7 /* SimplenoteEndpoints */; };
 		B51D44672C52F5AE00F296A7 /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D44662C52F5AE00F296A7 /* AuthenticationError.swift */; };
 		B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */; };
 		B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
@@ -820,7 +820,7 @@
 				BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */,
 				B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */,
 				12FDC872D726DADDBE206EC4 /* Pods_Automattic_Simplenote.framework in Frameworks */,
-				3F107B752C58BF44003F4755 /* SimplenoteEndpoints in Frameworks */,
+				B51D44582C52AB2200F296A7 /* SimplenoteEndpoints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1752,7 +1752,7 @@
 				B5609AEF24EF171D0097777A /* SimplenoteFoundation */,
 				3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */,
 				BA78AF702B5B2BC300DCF896 /* AutomatticTracks */,
-				3F107B742C58BF44003F4755 /* SimplenoteEndpoints */,
+				B51D44572C52AB2200F296A7 /* SimplenoteEndpoints */,
 			);
 			productName = Simplenote;
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
@@ -1860,7 +1860,7 @@
 				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
 				B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */,
 				BA78AF6D2B5B2BAE00DCF896 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */,
-				3F9026DF2C58BD430076719E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B51D44562C52AB2200F296A7 /* XCRemoteSwiftPackageReference "SimplenoteEndpoints-Swift" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -2910,20 +2910,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3F9026DF2C58BD430076719E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.29.0;
-			};
-		};
 		B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.0;
+			};
+		};
+		B51D44562C52AB2200F296A7 /* XCRemoteSwiftPackageReference "SimplenoteEndpoints-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Automattic/SimplenoteEndpoints-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
@@ -2953,15 +2953,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3F107B742C58BF44003F4755 /* SimplenoteEndpoints */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3F9026DF2C58BD430076719E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = SimplenoteEndpoints;
-		};
 		3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
 			productName = SimplenoteInterlinks;
+		};
+		B51D44572C52AB2200F296A7 /* SimplenoteEndpoints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B51D44562C52AB2200F296A7 /* XCRemoteSwiftPackageReference "SimplenoteEndpoints-Swift" */;
+			productName = SimplenoteEndpoints;
 		};
 		B5609AE724EEC9860097777A /* SimplenoteSearch */ = {
 			isa = XCSwiftPackageProductDependency;
