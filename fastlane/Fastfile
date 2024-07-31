@@ -47,6 +47,8 @@ SKIP_CODE_SIGNING_XCARGS = {
   CODE_SIGNING_REQUIRED: 'NO'
 }.freeze
 
+import 'lanes/build.rb'
+
 before_all do
   # Ensure we use the latest version of the Release Toolkit
   check_for_toolkit_updates unless is_ci || ENV['FASTLANE_SKIP_TOOLKIT_UPDATE_CHECK']
@@ -380,61 +382,6 @@ lane :upload_app_to_appcenter do |options|
   Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
     system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
   end
-end
-
-#############################################################################
-# build_and_upload_app_store
-# ---------------------------------------------------------------------------
-# This lane builds the app and uploads it to the Mac App Store, optionally
-# creating a GitHub release.
-# ---------------------------------------------------------------------------
-# Usage:
-# bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
-#
-# Example:
-# bundle exec fastlane build_and_upload_app_store
-# bundle exec fastlane build_and_upload_app_store create_github_release:true
-#############################################################################
-lane :build_and_upload_app_store do |options|
-  configure_apply
-  sh('rake dependencies:pod:clean')
-  cocoapods
-
-  setup_ci
-
-  app_store_code_signing
-
-  archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
-  build_simplenote(
-    codesign: true,
-    archive_path: archive_path
-  )
-
-  sentry_upload_dsym(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: 'a8c',
-    project_slug: 'simplenotemacos',
-    # At the time of writing, there's no way to explicitly configure the
-    # dSYM path, but build_mac_app sets it in the environment if successful.
-    # See `bundle exec fastlane action build_mac_app`.
-    dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
-  )
-
-  # Do not create the GitHub release unless explicitly requested
-  if options[:create_github_release]
-    archive_zip_path = "#{archive_path}.zip"
-    zip(path: archive_path, output_path: archive_zip_path)
-
-    create_release(
-      repository: GITHUB_REPO,
-      version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
-      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
-      release_assets: [archive_zip_path],
-      prerelease: options[:prerelease]
-    )
-  end
-
-  upload_to_testflight(api_key: app_store_connect_api_key)
 end
 
 #############################################################################

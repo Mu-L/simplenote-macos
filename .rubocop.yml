@@ -12,6 +12,7 @@ Layout/LineLength:
 Metrics/BlockLength:
   Exclude:
     - fastlane/Fastfile
+    - fastlane/lanes/*.rb
     - Rakefile
 
 Style/HashSyntax:
