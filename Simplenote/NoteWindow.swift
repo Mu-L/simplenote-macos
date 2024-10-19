@@ -42,4 +42,9 @@ class NoteWindow: NSWindow {
         editor.displayNote(note)
         title = note.titlePreview
     }
+
+    override func close() {
+        super.close()
+        editor.deleteCurrentNoteIfEmpty()
+    }
 }

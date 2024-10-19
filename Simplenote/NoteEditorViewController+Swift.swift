@@ -1,4 +1,5 @@
 import Foundation
+import CoreSpotlight
 import SimplenoteFoundation
 import SimplenoteInterlinks
 import SimplenoteSearch
@@ -73,6 +74,24 @@ extension NoteEditorViewController {
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
+    }
+
+    public func deleteCurrentNoteIfEmpty() {
+        guard let note,
+              note.content == nil || note.content?.isEmpty == true else {
+            return
+        }
+
+        delete(note: note)
+    }
+
+    @objc(deleteNote:)
+    func delete(note noteToDelete: Note) {
+
+        SPTracker.trackEditorNoteDeleted()
+        noteToDelete.deleted = true
+        noteActionsDelegate?.editorController(self, deletedNoteWithSimperiumKey: noteToDelete.simperiumKey)
+        CSSearchableIndex.default().deleteSearchableNote(noteToDelete)
     }
 }
 

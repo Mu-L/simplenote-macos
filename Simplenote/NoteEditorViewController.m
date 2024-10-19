@@ -402,11 +402,8 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
         if (noteToDelete.deleted) {
             continue;
         }
-        
-        [SPTracker trackEditorNoteDeleted];
-        noteToDelete.deleted = YES;
-        [self.noteActionsDelegate editorController:self deletedNoteWithSimperiumKey:noteToDelete.simperiumKey];
-        [[CSSearchableIndex defaultSearchableIndex] deleteSearchableNote:noteToDelete];
+
+        [self deleteNote:noteToDelete];
     }
 
     [self save];
