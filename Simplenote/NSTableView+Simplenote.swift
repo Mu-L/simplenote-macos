@@ -76,3 +76,13 @@ extension NSTableView {
         }
     }
 }
+
+extension NSTableView {
+    static var currentRowSelectionUserInfoKey: String {
+        "NSTableViewCurrentRowSelectionUserInfoKey"
+    }
+
+    static var previousRowSelectionUserInfoKey: String {
+        "NSTableViewPreviousRowSelectionUserInfoKey"
+    }
+}

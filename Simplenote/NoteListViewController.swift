@@ -583,7 +583,7 @@ extension NoteListViewController: SPTableViewDelegate {
     }
 
     private func shouldCheckForEmptyNote(notification: Notification) -> Bool {
-        guard let currentRowSelection = notification.userInfo?["NSTableViewCurrentRowSelectionUserInfoKey"] as? NSIndexSet else {
+        guard let currentRowSelection = notification.userInfo?[NSTableView.currentRowSelectionUserInfoKey] as? NSIndexSet else {
             return false
         }
 
@@ -591,7 +591,7 @@ extension NoteListViewController: SPTableViewDelegate {
     }
 
     private func previousSelectedIndex(from notification: Notification) -> Int? {
-        guard let previousSelectedIndexSet = notification.userInfo?["NSTableViewPreviousRowSelectionUserInfoKey"] as? NSIndexSet,
+        guard let previousSelectedIndexSet = notification.userInfo?[NSTableView.previousRowSelectionUserInfoKey] as? NSIndexSet,
               previousSelectedIndexSet.count == 1 else {
             return nil
         }
