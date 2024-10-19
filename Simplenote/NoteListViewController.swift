@@ -562,8 +562,41 @@ extension NoteListViewController: SPTableViewDelegate {
         }
 
         DispatchQueue.main.async {
+            self.deletePreviouslySelectedNoteIfEmpty(notification: notification)
             self.refreshPresentedNote()
         }
+    }
+
+    private func deletePreviouslySelectedNoteIfEmpty(notification: Notification) {
+        guard shouldCheckForEmptyNote(notification: notification),
+              let previousSelectedIndex = previousSelectedIndex(from: notification),
+              let previouslySelectedNote = listController.note(at: previousSelectedIndex),
+              shouldDeleteNoteAsEmpty(note: previouslySelectedNote) else {
+            return
+        }
+
+        delete(previouslySelectedNote)
+    }
+
+    private func shouldDeleteNoteAsEmpty(note: Note) -> Bool {
+        note.content == nil || note.content?.isEmpty == true
+    }
+
+    private func shouldCheckForEmptyNote(notification: Notification) -> Bool {
+        guard let currentRowSelection = notification.userInfo?["NSTableViewCurrentRowSelectionUserInfoKey"] as? NSIndexSet else {
+            return false
+        }
+
+        return currentRowSelection.count == 1
+    }
+
+    private func previousSelectedIndex(from notification: Notification) -> Int? {
+        guard let previousSelectedIndexSet = notification.userInfo?["NSTableViewPreviousRowSelectionUserInfoKey"] as? NSIndexSet,
+              previousSelectedIndexSet.count == 1 else {
+            return nil
+        }
+
+        return previousSelectedIndexSet.firstIndex
     }
 }
 
@@ -812,12 +845,16 @@ extension NoteListViewController {
     @IBAction
     func deleteAction(_ sender: Any) {
         for note in selectedNotes {
-            SPTracker.trackListNoteDeleted()
-            note.deleted = true
-            CSSearchableIndex.default().deleteSearchableNote(note)
+            delete(note)
         }
 
         simperium.save()
+    }
+
+    func delete(_ note: Note) {
+        SPTracker.trackListNoteDeleted()
+        note.deleted = true
+        CSSearchableIndex.default().deleteSearchableNote(note)
     }
 
     @IBAction
