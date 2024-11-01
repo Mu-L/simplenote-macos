@@ -11,13 +11,14 @@ steps:
       queue: mac
 
   - label: ":swift: SwiftLint"
-    command: run_swiftlint --strict
-    plugins: [$CI_TOOLKIT_PLUGIN]
+    command: swiftlint
+    env:
+      SWIFTLINT_OPTION_STRICT: true
     notify:
       - github_commit_status:
-          context: "SwiftLint"
+          context: SwiftLint
     agents:
-      queue: default
+      queue: linter
 
   - label: "🛠 Verify App Store Target Builds"
     command: .buildkite/commands/build-and-test-app-store.sh
