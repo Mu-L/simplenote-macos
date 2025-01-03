@@ -49,7 +49,7 @@ function ensure_is_in_input_files_list() {
   fi
 }
 
-SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
+SECRETS_ROOT="${HOME}/.mobile-secrets/macOS/simplenote"
 SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
 EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
 
