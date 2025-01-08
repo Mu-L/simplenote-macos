@@ -151,6 +151,9 @@ extension NSTextView {
             return
         }
 
+        // Capture the current content hash to detect changes
+        let contentHash = attributedString.string.hash
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             // Create a data detector for links
             let types = NSTextCheckingResult.CheckingType.link.rawValue
@@ -163,9 +166,19 @@ extension NSTextView {
             let matches = detector.matches(in: attributedString.string, options: [], range: fullRange)
 
             // Apply the changes on the main queue
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 guard let self = self,
                       let textStorage = self.textStorage else {
+                    return
+                }
+
+                // Verify the content hasn't changed while we were processing
+                guard contentHash == textStorage.string.hash else {
+                    return
+                }
+
+                // Verify ranges are still valid
+                guard fullRange.upperBound <= textStorage.length else {
                     return
                 }
 
@@ -184,11 +197,16 @@ extension NSTextView {
 
                     // Add link attributes while preserving existing ones
                     for match in matches where match.resultType == .link {
+                        // Verify each match range is still valid
+                        guard match.range.upperBound <= textStorage.length else {
+                            continue
+                        }
+
                         if let url = match.url {
                             textStorage.addAttribute(.link, value: url, range: match.range)
                         } else {
                             // If no URL, create one from the matched text
-                            let text = attributedString.string as NSString
+                            let text = textStorage.string as NSString
                             let linkText = text.substring(with: match.range)
                             if let url = URL(string: linkText) {
                                 textStorage.addAttribute(.link, value: url, range: match.range)
