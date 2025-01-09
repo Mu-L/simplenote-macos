@@ -4,6 +4,14 @@ import AppKit
 //
 class SPTextView: NSTextView {
 
+    override var textContainer: NSTextContainer? {
+        didSet {
+            print("# new text container: \(textContainer)")
+            print("# textLayoutManager: \(textLayoutManager)")
+            
+        }
+    }
+
     /// Is called when first responder status changes
     ///
     var onUpdateFirstResponder: (() -> Void)?

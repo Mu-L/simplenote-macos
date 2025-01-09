@@ -126,7 +126,7 @@ extension NSTextView {
         string = content
         textStorage?.processChecklists(with: .simplenoteEditorTextColor)
         undoManager?.removeAllActions()
-        processLinksInDocumentAsynchronously()
+//        processLinksInDocumentAsynchronously()
     }
 
     /// Returns the content represented as Plain Text

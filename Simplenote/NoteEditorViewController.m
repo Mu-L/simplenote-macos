@@ -71,10 +71,11 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self startListeningToTextKitNotifications];
 
     self.storage = [Storage new];
-    [self.noteEditor.layoutManager replaceTextStorage:self.storage];
-    [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
+//    [self.noteEditor.layoutMan`ager replaceTextStorage:self.storage];
+//    [self.noteEditor.layoutMan`ager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
 
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
@@ -214,7 +215,7 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
 
-    [self restoreScrollPosition];
+//    [self restoreScrollPosition];
     [self restoreCursorLocation];
 }
 

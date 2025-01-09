@@ -360,7 +360,7 @@ extension NoteEditorViewController {
 
     func refreshSearchResults(for query: SearchQuery?) {
         searchQuery = query
-        updateKeywordsHighlight()
+//        updateKeywordsHighlight()
     }
 }
 
@@ -668,6 +668,14 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func startListeningToTextKitNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleTextKitFallback),
+                                               name: NSTextView.didSwitchToNSLayoutManagerNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
     }
@@ -866,7 +874,7 @@ extension NoteEditorViewController {
     func displayContent(_ content: String?) {
         noteEditor.displayNote(content: content ?? "")
         DispatchQueue.main.async { [weak self] in
-            self?.updateKeywordsHighlight()
+//            self?.updateKeywordsHighlight()
         }
     }
 
@@ -985,6 +993,14 @@ extension NoteEditorViewController: InterlinkProcessorDelegate {
         noteEditor.insertTextAndLinkify(text: text, in: range)
         processor.dismissInterlinkLookup()
     }
+}
+
+extension NoteEditorViewController {
+    @objc
+    func handleTextKitFallback() {
+        print("# DID FALLBACK TO TEXT KIT")
+    }
+
 }
 
 // MARK: - EditorMetrics
