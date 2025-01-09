@@ -4,6 +4,23 @@ import AppKit
 //
 class SPTextView: NSTextView {
 
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//
+//        let container = NSTextContainer(size: .zero)
+//        container.widthTracksTextView = true
+//        container.heightTracksTextView = true
+//
+//        let textLayoutManager = NSTextLayoutManager()
+//        let textContentStorage = NSTextContentStorage()
+//
+//        textContentStorage.addTextLayoutManager(textLayoutManager)
+//        textLayoutManager.textContainer = container
+//
+//        textContainer = container
+//        print("#setup complete")
+//    }
+
     /// Is called when first responder status changes
     ///
     var onUpdateFirstResponder: (() -> Void)?
@@ -154,14 +171,14 @@ extension SPTextView {
     }
 
     private func textContainerHeightForSearchMap() -> CGFloat {
-        guard let layoutManager = layoutManager,
+        guard let textLayoutManager = textLayoutManager,
               let textContainer = textContainer,
               let scrollView = enclosingScrollView else {
             return 0.0
         }
 
         ensureLayout()
-        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
+        let textContainerHeight = textLayoutManager.usageBoundsForTextContainer.height
         let textContainerMinHeight = scrollView.frame.size.height - scrollView.scrollerInsets.top
         return max(textContainerHeight, textContainerMinHeight)
     }

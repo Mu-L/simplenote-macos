@@ -126,7 +126,7 @@ extension NSTextView {
         string = content
         textStorage?.processChecklists(with: .simplenoteEditorTextColor)
         undoManager?.removeAllActions()
-        processLinksInDocumentAsynchronously()
+//        processLinksInDocumentAsynchronously()
     }
 
     /// Returns the content represented as Plain Text
@@ -349,12 +349,12 @@ extension NSTextView {
     /// Ensure layout
     ///
     func ensureLayout() {
-        guard let layoutManager = layoutManager,
+        guard let textLayoutManager = textLayoutManager,
               let textContainer = textContainer else {
             return
         }
 
-        layoutManager.ensureLayout(for: textContainer)
+        textLayoutManager.ensureLayout(for: textLayoutManager.documentRange)
     }
 
     /// Scrolls to the Selected Location

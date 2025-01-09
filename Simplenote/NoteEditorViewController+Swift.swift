@@ -155,10 +155,26 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
+    func setup(_ editor: SPTextView) {
+        let container = NSTextContainer(size: .zero)
+        container.widthTracksTextView = true
+        container.heightTracksTextView = true
+
+        let textLayoutMananger = NSTextLayoutManager()
+        let contentStorage = NSTextContentStorage()
+
+        contentStorage.addTextLayoutManager(textLayoutMananger)
+        textLayoutMananger.textContainer = container
+
+        editor.textContainer = container
+    }
+
     @objc
     func refreshTextContainer() {
         guard let container = noteEditor.textContainer else {
-            fatalError()
+            setup(noteEditor)
+            refreshTextContainer()
+            return
         }
 
         let superviewWidth = view.frame.width
@@ -668,6 +684,16 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func startListeningToTextKit2Notifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textKitDidFallBack), name: NSTextView.willSwitchToNSLayoutManagerNotification, object: nil)
+    }
+
+    @objc
+    func textKitDidFallBack(sender: Notification) {
+        print("# DID FALL BACK TO TEXT KIT")
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
     }
@@ -984,6 +1010,22 @@ extension NoteEditorViewController: InterlinkProcessorDelegate {
     func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>) {
         noteEditor.insertTextAndLinkify(text: text, in: range)
         processor.dismissInterlinkLookup()
+    }
+}
+
+// MARK: - TextKit 2
+//
+extension NoteEditorViewController {
+    @objc
+    func setupEditor(with storage: Storage) {
+        let container = NSTextContainer(size: .zero)
+        container.widthTracksTextView = true
+        container.heightTracksTextView = true
+        noteEditor.textContentStorage?.attributedString = storage.backingStore
+        noteEditor.textLayoutManager?.textContainer = container
+        noteEditor.textContainer = container
+
+        print("# setup complete")
     }
 }
 
