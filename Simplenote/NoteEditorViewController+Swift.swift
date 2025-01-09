@@ -360,7 +360,7 @@ extension NoteEditorViewController {
 
     func refreshSearchResults(for query: SearchQuery?) {
         searchQuery = query
-//        updateKeywordsHighlight()
+        updateKeywordsHighlight()
     }
 }
 
@@ -874,7 +874,7 @@ extension NoteEditorViewController {
     func displayContent(_ content: String?) {
         noteEditor.displayNote(content: content ?? "")
         DispatchQueue.main.async { [weak self] in
-//            self?.updateKeywordsHighlight()
+            self?.updateKeywordsHighlight()
         }
     }
 

@@ -349,12 +349,11 @@ extension NSTextView {
     /// Ensure layout
     ///
     func ensureLayout() {
-        guard let layoutManager = layoutManager,
-              let textContainer = textContainer else {
+        guard let textLayoutManager = textLayoutManager else {
             return
         }
 
-        layoutManager.ensureLayout(for: textContainer)
+        textLayoutManager.ensureLayout(for: textLayoutManager.documentRange)
     }
 
     /// Scrolls to the Selected Location

@@ -162,14 +162,13 @@ extension SPTextView {
     }
 
     private func textContainerHeightForSearchMap() -> CGFloat {
-        guard let layoutManager = layoutManager,
-              let textContainer = textContainer,
+        guard let textLayoutManager = textLayoutManager,
               let scrollView = enclosingScrollView else {
             return 0.0
         }
 
         ensureLayout()
-        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
+        let textContainerHeight = textLayoutManager.usageBoundsForTextContainer.size.height
         let textContainerMinHeight = scrollView.frame.size.height - scrollView.scrollerInsets.top
         return max(textContainerHeight, textContainerMinHeight)
     }
