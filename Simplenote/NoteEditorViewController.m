@@ -211,7 +211,7 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
 
-//    [self restoreScrollPosition];
+    [self restoreScrollPosition];
     [self restoreCursorLocation];
 }
 
