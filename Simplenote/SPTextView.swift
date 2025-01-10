@@ -59,9 +59,9 @@ class SPTextView: NSTextView {
     }
 
     override func mouseDown(with event: NSEvent) {
-        if checkForChecklistClick(with: event) {
-            return
-        }
+//        if checkForChecklistClick(with: event) {
+//            return
+//        }
         super.mouseDown(with: event)
     }
 
