@@ -10,6 +10,9 @@ protocol EditorControllerDelegate: AnyObject {
     func editorController(_ controller: NoteEditorViewController, updatedNoteContents: Note)
 }
 
+// We alredy conform to NSTextViewDelegate in the .m, but need it to be visible here
+extension NoteEditorViewController: NSTextViewDelegate {}
+
 // MARK: - Interface Initialization
 //
 extension NoteEditorViewController {
@@ -25,6 +28,7 @@ extension NoteEditorViewController {
         let textView = SPTextView(frame: .zero, textContainer: textContainer)
         self.noteEditor = textView
         noteEditor.translatesAutoresizingMaskIntoConstraints = false
+        noteEditor.delegate = self
 
         view.addSubview(noteEditor)
 

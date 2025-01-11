@@ -34,7 +34,6 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 
 @interface NoteEditorViewController() <NSMenuDelegate,
                                         NSTextDelegate,
-                                        NSTextViewDelegate,
                                         SPBucketDelegate>
 
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
