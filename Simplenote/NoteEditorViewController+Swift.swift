@@ -13,6 +13,28 @@ protocol EditorControllerDelegate: AnyObject {
 // MARK: - Interface Initialization
 //
 extension NoteEditorViewController {
+    @objc
+    func setupTextView() {
+        let textLayoutManager = NSTextLayoutManager()
+        let textContainer = NSTextContainer()
+        let textStorage = NSTextContentStorage()
+
+        textStorage.addTextLayoutManager(textLayoutManager)
+        textLayoutManager.textContainer = textContainer
+
+        let textView = SPTextView(frame: .zero, textContainer: textContainer)
+        self.noteEditor = textView
+        noteEditor.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(noteEditor)
+
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: view.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
 
     @objc
     func setupStatusImageView() {
@@ -38,11 +60,11 @@ extension NoteEditorViewController {
         ///     1.  We've increased the `textContainerInset.height` (which affects both top/bottom)
         ///     2.  We've compensated for this "extra" top inset (caused by the new `textContainerInset.height` by adjusting `SplitItemMetrics.editorContentTopInset`
         ///
-        scrollView.contentView.addSubview(tagsView)
+        noteEditor.addSubview(tagsView)
 
         NSLayoutConstraint.activate([
-            tagsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            tagsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            tagsView.leadingAnchor.constraint(equalTo: noteEditor.leadingAnchor),
+            tagsView.trailingAnchor.constraint(equalTo: noteEditor.trailingAnchor),
             tagsView.bottomAnchor.constraint(equalTo: noteEditor.bottomAnchor)
         ])
     }
@@ -157,9 +179,9 @@ extension NoteEditorViewController {
 
     @objc
     func refreshTextContainer() {
-        guard let container = noteEditor.textContainer else {
-            fatalError()
-        }
+//        guard let container = noteEditor.textContainer else {
+//            fatalError()
+//        }
 
         let superviewWidth = view.frame.width
         let targetMaxTextWidth = maximumTextWidth(for: superviewWidth)
@@ -167,11 +189,11 @@ extension NoteEditorViewController {
         let targetContainerSize = textContainerSize(superviewWidth: superviewWidth, textContainerInset: targetContainerInset)
 
         noteEditor.textContainerInset = targetContainerInset
-        container.containerSize = targetContainerSize
+        noteEditor.textContainer?.containerSize = targetContainerSize
 
         /// Note: Disabling `widthTracksTextView` fixes jumpy Scroll Offsets on resize
         /// Ref. https://github.com/Automattic/simplenote-macos/issues/536
-        container.widthTracksTextView = false
+        noteEditor.textContainer?.widthTracksTextView = false
     }
 
     private func maximumTextWidth(for superviewWidth: CGFloat) -> CGFloat {
@@ -921,8 +943,8 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
-            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            searchMapView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
+            searchMapView.bottomAnchor.constraint(equalTo: noteEditor.bottomAnchor),
+            searchMapView.topAnchor.constraint(equalTo: noteEditor.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
         ])
 
         self.searchMapView = searchMapView

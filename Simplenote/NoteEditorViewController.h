@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
-@property (nonatomic, strong) IBOutlet SPTextView                               *noteEditor;
+@property (nonatomic, strong) SPTextView                                        *noteEditor;
 @property (nonatomic, strong) IBOutlet NSScrollView                             *scrollView;
 @property (nonatomic, strong) IBOutlet NSClipView                               *clipView;
 @property (nonatomic, strong) IBOutlet NSView                                   *tagsView;

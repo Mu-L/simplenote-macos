@@ -71,6 +71,8 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupTextView];
+    
     [self startListeningToTextKitNotifications];
 
     // Set hyperlinks to be the same color as the app's highlight color
