@@ -114,6 +114,10 @@ private extension NSTextView {
 //
 extension NSTextView {
 
+    private var linkProcessorCharacterLimit: Int {
+        1_000_000
+    }
+
     /// Displays the specified Note's Contents
     ///
     ///     -   List Markers will be replaced by Text Attachments
@@ -126,6 +130,7 @@ extension NSTextView {
         string = content
         textStorage?.processChecklists(with: .simplenoteEditorTextColor)
         undoManager?.removeAllActions()
+
         processLinksInDocumentAsynchronously()
     }
 
@@ -155,6 +160,10 @@ extension NSTextView {
     ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
     ///
     func processLinksInDocument() {
+        guard string.count < linkProcessorCharacterLimit else {
+            return
+        }
+
         /// Disable the Delegate:
         let theDelegate = delegate
         delegate = nil
