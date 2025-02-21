@@ -154,13 +154,20 @@ extension NSTextView {
             }
             let range = NSRange(location: 0, length: contentLength)
             let matches = detector.matches(in: content, options: [], range: range)
-            workingStorage.beginEditing()
+            
+            var linkAttributes: [(NSRange, URL)] = []
             for match in matches {
                 if let url = match.url {
-                    workingStorage.addAttribute(.link, value: url, range: match.range)
+                    linkAttributes.append((match.range, url))
                 }
             }
+            
+            workingStorage.beginEditing()
+            for (range, url) in linkAttributes {
+                workingStorage.addAttribute(.link, value: url, range: range)
+            }
             workingStorage.endEditing()
+            
             DispatchQueue.main.async { [weak self] in
                 guard let self = self,
                       let storage = self.textStorage as? Storage,
@@ -175,13 +182,14 @@ extension NSTextView {
                 self.undoManager?.disableUndoRegistration()
                 storage.beginEditing()
                 storage.removeAttribute(.link, range: NSRange(location: 0, length: storage.length))
-                workingStorage.enumerateAttribute(.link, in: range, options: []) { value, range, _ in
-                    guard range.location + range.length <= storage.length,
-                          let value = value else {
-                        return
+                
+                for (range, url) in linkAttributes {
+                    guard range.location + range.length <= storage.length else {
+                        continue
                     }
-                    storage.addAttribute(.link, value: value, range: range)
+                    storage.addAttribute(.link, value: url, range: range)
                 }
+                
                 storage.endEditingWithoutRestyling()
                 self.undoManager?.enableUndoRegistration()
                 self.delegate = originalDelegate
