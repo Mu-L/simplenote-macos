@@ -148,7 +148,6 @@ extension NSTextView {
         let content = string
         let contentLength = content.utf16.count
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let workingStorage = NSTextStorage(string: content)
             guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
                 return
             }
@@ -161,12 +160,6 @@ extension NSTextView {
                     linkAttributes.append((match.range, url))
                 }
             }
-            
-            workingStorage.beginEditing()
-            for (range, url) in linkAttributes {
-                workingStorage.addAttribute(.link, value: url, range: range)
-            }
-            workingStorage.endEditing()
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self,
