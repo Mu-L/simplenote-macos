@@ -212,9 +212,14 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
         [self displayContent:nil];
     }
 
-    [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
+    // Processing markdown and scroll position take a long time for really long notes
+    // this can cause the app to hang for a while.  By skipping these processes we save a lot of
+    // processing time when displaying a note
+    if (self.note.content.length < [NSTextView heavyProcessCharacterLimit]) {
+        [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
+        [self restoreScrollPosition];
+    }
 
-    [self restoreScrollPosition];
     [self restoreCursorLocation];
 }
 
