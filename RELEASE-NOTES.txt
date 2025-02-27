@@ -1,3 +1,7 @@
+2.23
+-----
+- Stop optional note processing for very long notes
+
 2.22
 -----
 - Updated link to privacy notice for California users

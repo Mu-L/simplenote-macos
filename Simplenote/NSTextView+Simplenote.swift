@@ -113,6 +113,13 @@ private extension NSTextView {
 // MARK: - I/O
 //
 extension NSTextView {
+    // On really long notes some processes take too long, we need to limit them to a certain character count
+    // currently 1 million characters is about when we start to see that lag.  So after that we don't process
+    // links or markdown or scroll position
+    @objc
+    static var heavyProcessCharacterLimit: Int {
+        1_000_000
+    }
 
     /// Displays the specified Note's Contents
     ///
@@ -126,6 +133,7 @@ extension NSTextView {
         string = content
         textStorage?.processChecklists(with: .simplenoteEditorTextColor)
         undoManager?.removeAllActions()
+
         processLinksInDocumentAsynchronously()
     }
 
@@ -155,6 +163,13 @@ extension NSTextView {
     ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
     ///
     func processLinksInDocument() {
+        // Processing links can take a long time for really long notes
+        // this can cause the app to hang for a while.  By skipping these processes we save a lot of
+        // processing time when updating notes
+        guard string.count < NSTextView.heavyProcessCharacterLimit else {
+            return
+        }
+
         /// Disable the Delegate:
         let theDelegate = delegate
         delegate = nil
