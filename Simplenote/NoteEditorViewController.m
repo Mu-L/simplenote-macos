@@ -437,8 +437,11 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
     [printInfo setHorizontalPagination:NSPrintingPaginationModeFit];
     [printInfo setVerticallyCentered:NO];
 
-    // Set the view's frame to the size of the page
-    printView.frame = CGRectMake(0, 0, printInfo.paperSize.width, printInfo.paperSize.height);
+    // Calculate the height needed for all content
+    NSSize contentSize = [printView.layoutManager usedRectForTextContainer:printView.textContainer].size;
+
+    // Set the view's frame to the size of the content
+    printView.frame = NSMakeRect(0, 0, printInfo.paperSize.width, MAX(contentSize.height, printInfo.paperSize.height));
 
     // Print the sucker
     NSPrintOperation *operation = [NSPrintOperation printOperationWithView:printView];
