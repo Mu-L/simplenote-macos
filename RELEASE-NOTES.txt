@@ -1,6 +1,7 @@
 2.23
 -----
 - Stop optional note processing for very long notes
+- Fixed a bug when printing multiple pages when in light mode
 
 2.22
 -----
