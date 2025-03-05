@@ -428,7 +428,9 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
 - (IBAction)printAction:(id)sender
 {
     // Create a copy of the editor view to be used as the print source
-    NSTextView *printView = [[NSTextView alloc] init];
+    // NOTE: forcing the print view into Text Kit 1 because TK2 was not printing multiple pages correctly
+    // ref: https://github.com/Automattic/simplenote-macos/issues/1232
+    NSTextView *printView = [[NSTextView alloc] initUsingTextLayoutManager:NO];
     [printView.textStorage appendAttributedString:self.noteEditor.attributedString];
     [printView setTextColor:[NSColor blackColor]];
 
@@ -437,8 +439,8 @@ static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferences
     [printInfo setHorizontalPagination:NSPrintingPaginationModeFit];
     [printInfo setVerticallyCentered:NO];
 
-    // Set the view's frame to the size of the page
-    printView.frame = CGRectMake(0, 0, printInfo.paperSize.width, printInfo.paperSize.height);
+    // Set the view's frame to the size of the content
+    printView.frame = NSMakeRect(0, 0, printInfo.paperSize.width, printInfo.paperSize.height);
 
     // Print the sucker
     NSPrintOperation *operation = [NSPrintOperation printOperationWithView:printView];
