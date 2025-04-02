@@ -1,2 +1,3 @@
-- Simplenote Mac'e kısayollar eklendi!
-- Yeni Sihirli Bağlantı Doğrulama desteği
+- Kaliforniya'daki kullanıcılar için gizlilik bildirimine giden bağlantı güncellendi
+- Çok uzun notlar için isteğe bağlı not işlemeyi durdurun
+- Açık modda birden çok sayfa yazdırırken oluşan bir hata düzeltildi

@@ -1,2 +1,3 @@
-- Atalhos adicionados ao Simplenote Mac
-- Suporte para nova autenticação com link mágico
+- Link do aviso de privacidade para usuários residentes da Califórnia atualizado
+- Capacidade de interromper o processamento opcional de anotações muito longas adicionada
+- Corrigido um bug que ocorria ao imprimir várias páginas no modo claro

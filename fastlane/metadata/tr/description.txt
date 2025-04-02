@@ -8,10 +8,10 @@ Simplenote hakkında bilgi edinmenin en iyi yolu kullanmayı denemektir. Önce b
 
 Oturum açtıktan sonra birkaç not oluşturmayı deneyin! Ardından simplenote.com adresine giderek diğer aygıtlarınıza da Simplenote uygulamasını indirin.
 
-Mutlu notlar.
+Keyiflice not alın!
 
 ---
 
-Gizlilik Politikası: https://automattic.com/privacy/
-Hizmet Şartları: https://simplenote.com/terms/
-Kaliforniya'daki kullanıcılar için gizlilik bildirimi: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+Gizlilik Bildirimi: https://automattic.com/privacy/
+Hizmet Koşulları: https://simplenote.com/terms/
+Kaliforniya'daki Kullanıcılar için Yeni Gizlilik Bildirimi: https://automattic.com/privacy/#us-privacy-laws

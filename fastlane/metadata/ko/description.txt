@@ -8,10 +8,10 @@ Simplenote를 익히는 최고의 방법은 직접 사용해보는 것입니다.
 
 가입한 다음 메모를 작성해 보세요. 그런 다음 simplenote.com으로 이동하여 다른 기기에 Simplenote를 다운로드하세요.
 
-즐거운 메모 생활!
+즐겁게 메모하세요!
 
 ---
 
 개인정보 취급방침: https://automattic.com/privacy/
 서비스 약관: https://simplenote.com/terms/
-캘리포니아 사용자 개인정보 고지사항: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+캘리포니아 사용자를 위한 개인정보보호 고지: https://automattic.com/privacy/#us-privacy-laws

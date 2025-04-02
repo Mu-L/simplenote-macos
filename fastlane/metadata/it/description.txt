@@ -8,10 +8,10 @@ Il modo migliore per conoscere Simplenote è provarlo. Ti sarà chiesto di crear
 
 Una volta inscritto, prova a creare delle note. Poi vai su simplenote.com e scarica Simplenote anche sugli altri dispositivi.
 
-Divertiti a scrivere note!
+Divertiti a prendere note!
 
 ---
 
 Politica sulla privacy: https://automattic.com/privacy/
 Termini di servizio: https://simplenote.com/terms/
-Nota sulla privacy per utenti in California: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+Notifica sulla privacy per utenti della California: https://automattic.com/privacy/#us-privacy-laws

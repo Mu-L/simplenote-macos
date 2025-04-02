@@ -1,2 +1,3 @@
-- Penambahan pintasan ke Simplenote Mac
-- Dukungan Autentikasi Tautan Ajaib baru
+- Pembaruan tautan pada pemberitahuan privasi bagi pengguna di California
+- Pemrosesan catatan opsional untuk catatan yang terlalu panjang dihentikan
+- Perbaikan bug saat mencetak beberapa halaman dalam mode terang

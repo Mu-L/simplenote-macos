@@ -1,2 +1,3 @@
-- Vi har lagt till genvägar till Simplenote för Mac.
-- Nytt stöd för autentisering med magisk länk
+- Vi har uppdaterat länken till integritetsnotisen för användare i Kalifornien
+- Vi har lagt till möjligheten att stoppa valfri anteckningsbehandling för mycket långa anteckningar
+- Vi har åtgärdat en bugg som uppstod när flera sidor skrevs ut i ljust läge
