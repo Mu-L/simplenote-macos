@@ -8,10 +8,10 @@ Det bästa sättet att lära sig mer om Simplenote är helt enkelt att testa. Du
 
 Efter att du har registrerat dig, testa att skapa några anteckningar! Därefter kan du gå till simplenote.com för att ladda ned appen till dina andra enheter.
 
-Lycka till med anteckningarna!
+Lycka till med antecknandet!
 
 ---
 
-Sekretesspolicy: https://automattic.com/privacy/
+Integritetspolicy: https://automattic.com/privacy/
 Användarvillkor: https://simplenote.com/terms/
-Sekretessmeddelande för användare i Kalifornien: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+Integritetsnotis för användare i Kalifornien: https://automattic.com/privacy/#us-privacy-laws

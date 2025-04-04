@@ -1,2 +1,3 @@
-- Se han añadido accesos directos a Simplenote para Mac.
-- Compatibilidad con la nueva autenticación mediante enlaces mágicos
+- Se ha actualizado el enlace que lleva al aviso de privacidad para usuarios de California
+- Se ha detenido el procesamiento opcional para notas muy largas
+- Se ha corregido un error que se producía al imprimir varias páginas en el modo claro

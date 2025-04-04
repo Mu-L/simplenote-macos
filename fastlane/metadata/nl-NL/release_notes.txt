@@ -1,2 +1,3 @@
-- Shortcuts zijn toegevoegd aan Simplenote Mac!!
-- Nieuwe ondersteuning voor authenticatie via magische link
+- Link naar privacyverklaring voor gebruikers in Californië bijgewerkt
+- De verwerking van optionele notities voor zeer lange notities stopgezet
+- Een bug verholpen bij het afdrukken van meerdere pagina's in de lichte modus

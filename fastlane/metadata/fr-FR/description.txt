@@ -1,6 +1,6 @@
-Simplenote est un outil facile pour conserver des notes, listes, idées, etc. Vos notes restent synchronisées sur tous vos appareils, et ce gratuitement.
+Simplenote est un outil facile à utiliser pour conserver des notes, listes, idées, etc. Vos notes restent synchronisées sur tous vos appareils, et ce gratuitement.
 
-L’expérience Simplenote est synonyme de vitesse et d’efficacité. Il vous suffit de l’ouvrir, d'entrer vos réflexions, et le tour est joué. Au fur et à mesure que votre ensemble de notes augmente, vous pouvez effectuer des recherches instantanées sur celles-ci et les organiser à l’aide d’étiquettes et d’épingles. Vous pouvez ajouter des listes de contrôle à vos notes afin d’assurer le suivi de vos tâches. Vous pouvez également partager des notes et les publier pour d’autres personnes.
+L’expérience Simplenote est synonyme de vitesse et d’efficacité. Il suffit de l’ouvrir, d’écrire vos réflexions, et le tour est joué. Au fur et à mesure que votre ensemble de notes augmente, vous pouvez effectuer des recherches instantanées sur celles-ci et les organiser à l’aide d’étiquettes et d’épingles. Vous pouvez ajouter des listes de contrôle à vos notes afin d’assurer le suivi de vos tâches. Vous pouvez également partager des notes et les publier pour d’autres personnes.
 
 Vous aimez Markdown ? Vous pouvez modifier, prévisualiser et publier vos notes à l’aide du formatage Markdown.
 
@@ -14,4 +14,4 @@ Bonne prise de notes !
 
 Politique de confidentialité : https://automattic.com/privacy/
 Conditions d’utilisation : https://simplenote.com/terms/
-Avis de confidentialité pour les utilisateurs californiens : https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+Avis de confidentialité pour les utilisateurs californiens : https://automattic.com/privacy/#us-privacy-laws

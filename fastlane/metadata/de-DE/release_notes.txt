@@ -1,2 +1,3 @@
-- Kurzbefehle zu Simplenote für Mac hinzugefügt!
-- Neuer Authentifizierungssupport für magische Links
+- Aktualisierter Link zu den Datenschutzhinweisen für Benutzer in Kalifornien
+- Optionale Notizenverarbeitung für sehr lange Notizen anhalten
+- Fehler beim Drucken mehrerer Seiten im Hell-Modus behoben

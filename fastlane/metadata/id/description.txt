@@ -1,4 +1,4 @@
-Simplenote adalah sebuah cara mudah untuk menyimpan catatan, daftar, ide, dan sebagainya. Catatan Anda tetap tersinkronkan dengan semua perangkat secara gratis.
+Simplenote adalah cara yang mudah untuk menyimpan catatan, daftar, ide, dan sebagainya. Catatan Anda tetap tersinkronkan dengan semua perangkat secara gratis.
 
 Simplenote adalah tentang kecepatan dan efisiensi. Buka aplikasi, tuliskan pemikiran Anda, dan selesai. Ketika koleksi catatan Anda berkembang, Anda dapat mencarinya secara cepat dan menjaganya tetap tertata dengan label dan PIN. Daftar periksa dapat ditambahkan ke catatan untuk memantau tugas. Anda juga dapat berbagi catatan dan menerbitkannya untuk orang lain.
 
@@ -14,4 +14,4 @@ Selamat mencatat!
 
 Kebijakan Privasi: https://automattic.com/privacy/
 Ketentuan Layanan: https://simplenote.com/terms/
-Pemberitahuan privasi pengguna California: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
+Pemberitahuan Privasi untuk Pengguna di California: https://automattic.com/privacy/#us-privacy-laws
