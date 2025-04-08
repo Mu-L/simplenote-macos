@@ -300,23 +300,23 @@ lane :finalize_release do |options|
   trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
 end
 
-#####################################################################################
-# build_and_upload_beta
-# -----------------------------------------------------------------------------------
-# This lane builds the app and upload it for beta testing
-# -----------------------------------------------------------------------------------
-# Usage:
-# bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
+# This lane builds the app using a Developer ID certificate for distributing internally.
 #
-# Example:
-# bundle exec fastlane build_and_upload_beta
-# bundle exec fastlane build_and_upload_beta skip_confirm:true
-#####################################################################################
+# Note: Historically, this lane was used to not only build but also upload the app to App Center.
+# App Center has since been discontinued, and Firebase App Distribution and its corresponding fastlane plugin
+# (which we use as a replacement for iOS apps) does not seem to support macOS `.app` binaries.
+#
+# Thus at the moment this lane only builds the `.app` and sign it with a Developer ID certificate but lets the caller
+# decide how to distribute it. If there's really a need for distributing those kind of builds more often in the future,
+# we could consider using [Apps CDN](https://fieldguide.automattic.com/apps-cdn-technical-documentation/)
+# and `upload_build_to_apps_cdn` to distribute them.
+#
 desc 'Builds and updates for beta distribution'
-lane :build_and_upload_beta do
+lane :build_internal_beta do |skip_dsym_upload: true|
   ensure_git_status_clean
 
   configure_apply
+  configure_code_signing_developer_id
   sh('rake dependencies:pod:clean')
   cocoapods
 
@@ -324,19 +324,24 @@ lane :build_and_upload_beta do
     workspace: WORKSPACE,
     scheme: INTERNAL_SCHEME,
     clean: true,
-    output_directory: BUILD_FOLDER
+    output_directory: BUILD_FOLDER,
+    export_method: 'developer-id',
+    export_options: {
+      provisioningProfiles: {
+        "#{APP_STORE_BUNDLE_IDENTIFIER}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER} macos",
+        "#{APP_STORE_BUNDLE_IDENTIFIER_INTENTS}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER_INTENTS} macos"
+      },
+      signingSytle: 'manual'
+    }
   )
 
-  appcenter_upload(
-    api_token: get_required_env('APPCENTER_API_TOKEN'),
-    owner_name: 'automattic',
-    owner_type: 'organization',
-    app_name: 'Simplenote-OSX',
-    ipa: './build/Simplenote.app',
-    notify_testers: false
-  )
+  # Show release notes and the path to the binary
+  sh('ruby', '../Scripts/extract_release_notes.rb', '-k')
+  UI.success("DeveloperID-signed binary is at: #{File.join(BUILD_FOLDER, 'Simplenote.app')}")
 
-  dsym_path = File.join(File.dirname(Dir.pwd), 'build', 'Simplenote.app.dSYM.zip')
+  dsym_path = File.join(BUILD_FOLDER, 'Simplenote.app.dSYM.zip')
+
+  next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
   sentry_upload_dsym(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
@@ -371,41 +376,6 @@ lane :update_metadata_on_app_store_connect do |with_screenshots: false|
     api_key: app_store_connect_api_key,
     copyright: "© #{Time.now.year} Automattic, Inc."
   )
-end
-
-# Temporary lane to automate the process of uploading the .app manually
-# exported after archiving the Simplenote scheme from Xcode.
-#
-# The process is not automated via the build_and_upload_beta lane due to
-# issues with Sparkle and code signing.
-lane :upload_app_to_appcenter do |options|
-  app_path = options[:app_path]
-  UI.user_error! "Missing .app path option.\nUsage:\n\tfastlane upload_app_to_appcenter app_path:path/to/.app" if app_path.nil?
-
-  app_path = File.expand_path(app_path)
-  UI.user_error! "Could not find .app at #{app_path}" unless File.exist?(app_path)
-
-  Tempfile.create do |t|
-    release_notes_path = File.path(t)
-    system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
-
-    appcenter_upload(
-      api_token: get_required_env('APPCENTER_API_TOKEN'),
-      owner_name: 'automattic',
-      owner_type: 'organization',
-      app_name: 'Simplenote-OSX',
-      ipa: app_path,
-      release_notes: File.read(release_notes_path),
-      notify_testers: false
-    )
-  end
-
-  # Rather than taking another manual step and finding the path to the
-  # archive, let's just bank on the fact that one wouldn't do many archives
-  # of the app on a given day and upload all of the archives done today.
-  Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
-    system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
-  end
 end
 
 #############################################################################
@@ -527,11 +497,11 @@ lane :download_strings_files_from_glotpress do
 end
 
 lane :configure_code_signing do |readonly: true|
-  configure_code_signing_app_center(readonly: readonly)
+  configure_code_signing_developer_id(readonly: readonly)
   configure_code_signing_app_store(readonly: readonly)
 end
 
-lane :configure_code_signing_app_center do |readonly: true|
+lane :configure_code_signing_developer_id do |readonly: true|
   configure_code_signing(type: 'developer_id', readonly: readonly)
 end
 

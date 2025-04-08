@@ -11,13 +11,13 @@
 #
 # ruby ./this_script | pbcopy
 #
-# To generate the GitHub and App Center release message:
+# To generate the GitHub release message:
 #
 # ruby ./this_script -k | pbcopy
 
 GITHUB_URL = 'https://github.com/Automattic/simplenote-macos'
 
-RELEASE_NOTES_FILE = 'RELEASE-NOTES.txt'
+RELEASE_NOTES_FILE = File.join(File.dirname(__FILE__, 2), 'RELEASE-NOTES.txt')
 NOTES = File.read(RELEASE_NOTES_FILE)
 lines = NOTES.lines
 
@@ -68,7 +68,7 @@ when :strip_pr_links
 when :keep_pr_links
   # The PR "links" are not actually links, but PR "ids". On GitHub, they'll
   # be automatically parsed into links to the corresponding PR, but outside
-  # GitHub, such as in our internal posts or on App Center, they won't.
+  # GitHub, such as in our internal posts, they won't.
   #
   # It's probably best to update the convention in writing the release notes
   # but in the meantime let's compensate with more automation.
