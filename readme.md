@@ -33,7 +33,8 @@ Hopefully, you won't need to update Sparkle till version 2.x has shipped but, in
 
 #### SwiftLint
 
-We use [SwiftLint](https://github.com/realm/SwiftLint) to enforce a common style for Swift code. If you plan to write code, SwiftLint is going to be installed when you run `bundle exec pod install` and SwiftLint will run during the build.
+We use [SwiftLint](https://github.com/realm/SwiftLint) to enforce a common style for Swift code. If you plan to write code, SwiftLint is going to be installed when you run a build from Xcode.
+
 No commit should have lint warnings or errors.
 
 ### Open Xcode

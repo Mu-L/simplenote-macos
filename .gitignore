@@ -51,3 +51,6 @@ build/
 # not encrypted should be ignored
 .configure-files/*
 !.configure-files/*.enc
+
+# Swift Package Manager
+.build
