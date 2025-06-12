@@ -1,7 +1,8 @@
-swiftlint_version: 0.54.0
+swiftlint_version: 0.58.2
 
 # Project configuration
 excluded:
+  - BuildTools/.build
   - Pods
   - fastlane
   - vendor
