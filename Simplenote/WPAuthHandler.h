@@ -4,7 +4,7 @@
 //  Handles oauth authentication with WordPress.com
 //
 
-@import Simperium_OSX;
+@import Simperium;
 
 @interface WPAuthHandler : NSObject
 + (BOOL)isWPAuthenticationUrl:(NSURL*)url;

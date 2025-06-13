@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@import Simperium_OSX;
+@import Simperium;
 
 
 @class MainWindowController;

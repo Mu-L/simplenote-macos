@@ -1,4 +1,4 @@
-import Simperium_OSX
+import Simperium
 
 extension SPAuthenticationTextField {
     @discardableResult

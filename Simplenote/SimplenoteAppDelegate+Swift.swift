@@ -1,6 +1,6 @@
 import Foundation
 import SimplenoteSearch
-import Simperium_OSX
+import Simperium
 import CoreSpotlight
 
 // MARK: - Initialization

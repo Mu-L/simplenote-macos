@@ -7,7 +7,7 @@
 //
 
 #import "DateTransformer.h"
-@import Simperium_OSX;
+@import Simperium;
 
 @implementation DateTransformer
 

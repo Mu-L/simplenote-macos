@@ -20,7 +20,7 @@
 
 #import "Simplenote-Swift.h"
 
-@import Simperium_OSX;
+@import Simperium;
 
 
 

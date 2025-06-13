@@ -20,7 +20,7 @@
 #import "Simplenote-Swift.h"
 #import "WPAuthHandler.h"
 
-@import Simperium_OSX;
+@import Simperium;
 
 #if SPARKLE_OTA
 #import <Sparkle/Sparkle.h>

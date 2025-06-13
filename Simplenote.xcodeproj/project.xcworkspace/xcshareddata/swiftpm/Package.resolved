@@ -1,12 +1,13 @@
 {
+  "originHash" : "c64505db77a4fc4fbfddb5eb2e069350777e6c1815c769eb9bc98f4034039c0c",
   "pins" : [
     {
       "identity" : "automattic-tracks-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Automattic/Automattic-Tracks-iOS",
       "state" : {
-        "revision" : "b6979ef69b4b094c8809ba83661222dcd0d7667e",
-        "version" : "3.2.0"
+        "revision" : "437f586a62c07c6ceec9baf043237b2afe7ea1ac",
+        "version" : "3.5.2"
       }
     },
     {
@@ -14,8 +15,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/getsentry/sentry-cocoa",
       "state" : {
-        "revision" : "b847a202a517a90763e8fd0656d8028aeee7b78d",
-        "version" : "8.20.0"
+        "revision" : "930b78a63f47549c81e6e63c9172584f7d3dfdd6",
+        "version" : "8.52.1"
+      }
+    },
+    {
+      "identity" : "simperium-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Simperium/simperium-ios/",
+      "state" : {
+        "revision" : "a6714222ddadb4c56ba122625732a029b165d40c",
+        "version" : "1.9.1-beta.1"
+      }
+    },
+    {
+      "identity" : "simplenoteendpoints-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Automattic/SimplenoteEndpoints-Swift",
+      "state" : {
+        "revision" : "3d1c0a5db39ca798a7de10e7faeef8ae66e941e6",
+        "version" : "1.0.0"
       }
     },
     {
@@ -64,5 +83,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

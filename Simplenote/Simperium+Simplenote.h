@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "Preferences.h"
-@import Simperium_OSX;
+@import Simperium;
 
 
 @interface Simperium (Simplenote)

@@ -1,6 +1,6 @@
 import Foundation
 import SimplenoteEndpoints
-import Simperium_OSX
+import Simperium
 
 
 // MARK: - SimperiumAuthenticatorProtocol

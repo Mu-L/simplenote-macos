@@ -16,11 +16,6 @@ We use a few tools to help with development. To install or update the required d
 
 `rake dependencies`
 
-#### CocoaPods
-
-Simplenote for iOS uses [CocoaPods](http://cocoapods.org/) to manage third party libraries.
-Third party libraries and resources managed by CocoaPods will be installed by the `rake dependencies` command above.
-
 #### Why isn't Sparkle fetched with CocoaPods
 
 At the time of writing, the version of Sparkle distributed via CocoaPods doesn't support Sandboxing, a feature that we value in Simplenote macOS.
@@ -39,7 +34,7 @@ No commit should have lint warnings or errors.
 
 ### Open Xcode
 
-Launch the workspace by running the following from the command line:
+Launch the project by running the following from the command line:
 
 `rake xcode`
 
