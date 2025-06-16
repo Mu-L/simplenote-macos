@@ -1,4 +1,4 @@
-@import Simperium_OSX.SPManagedObject;
+@import Simperium.SPManagedObject;
 
 
 @interface Preferences: SPManagedObject

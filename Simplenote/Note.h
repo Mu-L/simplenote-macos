@@ -6,7 +6,7 @@
 //  Copyright 2008 Simperium. All rights reserved.
 //
 
-@import Simperium_OSX;
+@import Simperium;
 
 @interface Note : SPManagedObject {
 	NSString *content;

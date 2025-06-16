@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-@import Simperium_OSX;
+@import Simperium;
 
 @class AuthenticationMode;
 @class AuthenticationState;

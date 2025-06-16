@@ -1,6 +1,6 @@
 #import "StatusChecker.h"
 #import "Note.h"
-@import Simperium_OSX;
+@import Simperium;
 
 
 

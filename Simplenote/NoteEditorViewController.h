@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-@import Simperium_OSX;
+@import Simperium;
 
 @class BackgroundView;
 @class InterlinkProcessor;

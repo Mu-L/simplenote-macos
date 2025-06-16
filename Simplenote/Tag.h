@@ -6,7 +6,7 @@
 //  Copyright 2010 Simperium. All rights reserved.
 //
 
-@import Simperium_OSX;
+@import Simperium;
 
 @interface Tag : SPManagedObject {
 	NSString *name;
