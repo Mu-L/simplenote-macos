@@ -2794,7 +2794,7 @@
 			repositoryURL = "https://github.com/Simperium/simperium-ios/";
 			requirement = {
 				kind = exactVersion;
-				version = "1.9.1-beta.1";
+				version = "1.9.1-beta.2";
 			};
 		};
 		B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */ = {

@@ -1,5 +1,5 @@
 {
-  "originHash" : "c64505db77a4fc4fbfddb5eb2e069350777e6c1815c769eb9bc98f4034039c0c",
+  "originHash" : "eb351d32286a585e5446351459c8d5c0dd9b77d72de6e18b7e603c7f5c235ebf",
   "pins" : [
     {
       "identity" : "automattic-tracks-ios",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Simperium/simperium-ios/",
       "state" : {
-        "revision" : "a6714222ddadb4c56ba122625732a029b165d40c",
-        "version" : "1.9.1-beta.1"
+        "revision" : "5561a15a4836efe5d068a366b60599b7b794af70",
+        "version" : "1.9.1-beta.2"
       }
     },
     {
