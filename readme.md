@@ -16,15 +16,19 @@ We use a few tools to help with development. To install or update the required d
 
 `rake dependencies`
 
-#### Why isn't Sparkle fetched with CocoaPods
+#### Why isn't Sparkle fetched with Swift Package Manager
 
-At the time of writing, the version of Sparkle distributed via CocoaPods doesn't support Sandboxing, a feature that we value in Simplenote macOS.
+**TL;DR** We had issues with CocoaPods in the past and haven't had the bandwidth to upgrade to SwiftPM yet.
 
-To distribute the beta version of Simplenote with Sparkle, we need to use the [`2.x`](https://github.com/sparkle-project/Sparkle/tree/2.x) branch.
-This new version has been in the works for quite some time and you can keep track of process to get it shipped [on this issue in the Sparkle repo](https://github.com/sparkle-project/Sparkle/issues/1523).
+Back in the CocoaPods days, when we tried to fetch Sparkle using it, the version distributed via CocoaPods didn't support Sandboxing, an important feature in Simplenote macOS at the time.
 
-In the meantime, we need to manually clone the branch, build the framework and copy it in our repo.
-Hopefully, you won't need to update Sparkle till version 2.x has shipped but, in case you do, this process is automated via the `./Scripts/update-sparkle.sh` script.
+To distribute the beta version of Simplenote with Sparkle, we used the [`2.x`](https://github.com/sparkle-project/Sparkle/tree/2.x) branch.
+See also [this issue in the Sparkle repo](https://github.com/sparkle-project/Sparkle/issues/1523).
+
+Since then, Sparkle officially shipped their version 2, including SwiftPM support, but we haven't had a chance to upgrade yet.
+
+If there'll be a need to work with Sparkle, ideally we should take the time to upgrade.
+But just for reference, the process used so far to build from source is contained in the `./Scripts/update-sparkle.sh` script.
 
 #### SwiftLint
 
