@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'danger-dangermattic', '~> 1.0'
-gem 'fastlane', '~> 2.222'
+gem 'fastlane', '~> 2.232'
 gem 'fastlane-plugin-sentry', '~> 1.14'
 gem 'fastlane-plugin-wpmreleasetoolkit', '~> 9.2'
 gem 'rake', '~> 12.3'
