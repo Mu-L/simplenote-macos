@@ -368,7 +368,6 @@ DEPENDENCIES
   fastlane-plugin-sentry (~> 1.14)
   fastlane-plugin-wpmreleasetoolkit (~> 9.2)
   rake (~> 12.3)
-  xcpretty-travis-formatter (~> 1.0)
 
 BUNDLED WITH
    2.4.14
