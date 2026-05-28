@@ -440,7 +440,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, sample)
     }
 
-    /// Verifies that `toggleListMarkersAtSelectedRange` nukes all list markers from the SelectedRange, whenver there is at least one marker
+    /// Verifies that `toggleListMarkersAtSelectedRange` nukes all list markers from the SelectedRange, whenever there is at least one marker
     ///
     func testToggleListMarkersAtSelectedRangeRemovesAllMarkersWheneverThereWasAtLeastOneAttachmentInTheText() {
         let sample = [
